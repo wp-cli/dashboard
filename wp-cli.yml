@@ -1,0 +1,2 @@
+require:
+  - bin/fetch-github-data.php
