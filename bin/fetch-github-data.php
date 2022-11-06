@@ -40,10 +40,10 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 			continue;
 		}
 
-		$date = date( 'Y-m-d' );
-		$path = WP_CLI_DASHBOARD_BASE_DIR . '/github-data/' . $key . '/' . $date;
+		$time = date( 'Y-m-d-H-00' );
+		$path = WP_CLI_DASHBOARD_BASE_DIR . '/github-data/' . $key . '/' . $time;
 		if ( file_exists( $path ) && empty( $assoc_args['force'] ) ) {
-			WP_CLI::log( sprintf( 'Skipping: Data already exists for %s on %s', $key, $date ) );
+			WP_CLI::log( sprintf( 'Skipping: Data already exists for %s on %s', $key, $time ) );
 			continue;
 		}
 
@@ -75,7 +75,7 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 			mkdir( dirname( $path ), 0777, true );
 		}
 		file_put_contents( $path, $total_count );
-		WP_CLI::log( sprintf( 'Saved: Total count for %s on %s: %d', $key, $date, $total_count ) );
+		WP_CLI::log( sprintf( 'Saved: Total count for %s on %s: %d', $key, $time, $total_count ) );
 	}
 
 	WP_CLI::success( 'Fetch data complete.' );
