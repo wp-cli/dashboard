@@ -3,9 +3,14 @@
 /**
  * Fetches GitHub data defined in ./config.yml and stores it in in ./github-data.
  *
+ * ## OPTIONS
+ *
+ * [--force]
+ * : Forcefully overwrite any existing data.
+ *
  * @when before_wp_load
  */
-function wp_cli_dashboard_fetch_github_data() {
+function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 
 	define( 'WP_CLI_DASHBOARD_BASE_DIR', dirname( __DIR__ ) );
 
@@ -35,6 +40,13 @@ function wp_cli_dashboard_fetch_github_data() {
 			continue;
 		}
 
+		$date = date( 'Y-m-d' );
+		$path = WP_CLI_DASHBOARD_BASE_DIR . '/github-data/' . $key . '/' . $date;
+		if ( file_exists( $path ) && empty( $assoc_args['force'] ) ) {
+			WP_CLI::log( sprintf( 'Skipping: Data already exists for %s on %s', $key, $date ) );
+			continue;
+		}
+
 		$headers = array(
 			'Accept'        => 'application/vnd.github.v3+json',
 			'User-Agent'    => 'WP-CLI',
@@ -59,14 +71,11 @@ function wp_cli_dashboard_fetch_github_data() {
 		$data = json_decode( $response->body );
 		$total_count = $data->total_count;
 
-		WP_CLI::log( sprintf( 'Current count for %s: %d', $key, $total_count ) );
-		$file = date( 'Y-m-d' );
-		$path = WP_CLI_DASHBOARD_BASE_DIR . '/github-data/' . $key . '/' . $file;
-
 		if ( ! is_dir( dirname( $path ) ) ) {
 			mkdir( dirname( $path ), 0777, true );
 		}
 		file_put_contents( $path, $total_count );
+		WP_CLI::log( sprintf( 'Saved: Total count for %s on %s: %d', $key, $date, $total_count ) );
 	}
 
 	WP_CLI::success( 'Fetch data complete.' );
