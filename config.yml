@@ -1,6 +1,7 @@
 github_data:
   open_issues:
     search: is:open org:wp-cli is:issue sort:created-desc
+  open_issues_no_label:
+    search: is:open org:wp-cli is:issue sort:created-desc no:label
   open_pull_requests:
     search: is:open sort:updated-desc org:wp-cli is:pr
-    
