@@ -43,6 +43,12 @@ jobs:
           git config --global user.email "wp-make-coffee@wp-cli.org"
           git config --global user.name "wp-make-coffee"
 
+      - name: Install WP-CLI
+        run: |
+          curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli-nightly.phar
+          sudo mv wp-cli-nightly.phar /usr/local/bin/wp
+          sudo chmod +x /usr/local/bin/wp
+
       - name: Fetch GitHub data
         run: |
           wp dashboard fetch-github-data
