@@ -63,6 +63,34 @@
 
 		</div>
 
+		<h2>Repositories</h2>
+
+		<table>
+			<thead>
+				<tr>
+					<th class="repository">Repository</th>
+					<th>Overview</th>
+					<th class="build-status">Build Status</th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php
+			$github_repositories = wp_cli_dashboard_get_config_data( 'github_repositories' );
+			?>
+			<?php foreach ( $github_repositories as $repo ) : ?>
+				<tr>
+					<td><a href="<?php echo sprintf( 'https://github.com/%s', $repo ); ?>" target="_blank"><?php echo $repo; ?></a></td>
+					<td></td>
+					<td>
+						<?php if ( 'wp-cli/wp-cli-dev' !== $repo ) : ?>
+							<a href="<?php echo sprintf( 'https://github.com/%s/actions/workflows/testing.yml', $repo ); ?>" target="_blank"><img height="20px" src="<?php echo sprintf( 'https://github.com/%s/actions/workflows/testing.yml/badge.svg', $repo ); ?>" alt="Testing" style="max-width: 100%;"></a>
+						<?php endif; ?>
+					</td>
+				</tr>
+			<?php endforeach; ?>
+			</tbody>
+		</table>
+
 	</main>
 
 </body>
