@@ -1,4 +1,4 @@
-name: Fetch GitHub data
+name: Fetch GitHub data and rebuild dashboard
 
 on:
   workflow_dispatch:
@@ -52,6 +52,12 @@ jobs:
       - name: Fetch GitHub data
         run: |
           wp dashboard fetch-github-data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Rebuild dashboard
+        run: |
+          wp dashboard build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
