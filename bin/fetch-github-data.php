@@ -1,5 +1,7 @@
 <?php
 
+require_once dirname( __DIR__ ) . '/theme/functions.php';
+
 /**
  * Fetches GitHub data defined in ./config.yml and stores it in in ./github-data.
  *
@@ -11,8 +13,6 @@
  * @when before_wp_load
  */
 function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
-
-	define( 'WP_CLI_DASHBOARD_BASE_DIR', dirname( __DIR__ ) );
 
 	$config_file = WP_CLI_DASHBOARD_BASE_DIR . '/config.yml';
 	if ( ! file_exists( $config_file ) ) {

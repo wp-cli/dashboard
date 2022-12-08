@@ -11,3 +11,6 @@ github_data:
   open_pull_requests:
     label: Open Pull Requests
     search: is:open sort:updated-desc org:wp-cli is:pr
+  open_pull_requests_awaiting_review:
+    label: Open Pull Requests Awaiting Review
+    search: is:open sort:updated-desc org:wp-cli is:pr team-review-requested:wp-cli/committers

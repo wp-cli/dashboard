@@ -89,6 +89,20 @@ new Chartist.Line('#open_pull_requests', {
 });
 </script>
 				</div>
+							<div class="grid-cell">
+					<h3><a href="https://github.com/issues?q=is%3Aopen%20sort%3Aupdated-desc%20org%3Awp-cli%20is%3Apr%20team-review-requested%3Awp-cli%2Fcommitters" target="_blank">Open Pull Requests Awaiting Review</a></h3>
+					<div id="open_pull_requests_awaiting_review"></div>
+<script>
+new Chartist.Line('#open_pull_requests_awaiting_review', {
+	labels: ["12\/4"],
+	series: [["3"]],
+}, {
+	low: 0,
+	onlyIntegers: true,
+	showPoint: false,
+});
+</script>
+				</div>
 			
 		</div>
 
