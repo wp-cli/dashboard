@@ -9,3 +9,34 @@
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
 }
+
+table {
+	width: 100%;
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+}
+
+table thead {
+	text-align: left;
+	background-color: #EFEFEF;
+}
+
+table th,
+table td {
+	padding: 16px;
+	border-left: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+table th:first-of-type,
+table td:first-of-type {
+	border-left: none;
+}
+
+table th.repository {
+	width: 220px;
+}
+
+table th.build-status {
+	width: 120px;
+}
