@@ -66,5 +66,5 @@ jobs:
         if: env.CHANGES_DETECTED == 1
         run: |
           git add github-data index.html
-          git commit -m "Fetch GitHub data - $(date +'%Y-%m-%d-%H-00')"
+          git commit -m "Fetch GitHub data and rebuild dashboard - $(date +'%Y-%m-%d-%H-%M-%S')"
           git push origin
