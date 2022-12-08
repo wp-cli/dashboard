@@ -13,12 +13,17 @@ $data = array();
 $labels = array();
 foreach ( glob( WP_CLI_DASHBOARD_BASE_DIR . '/github-data/' . $key . '/*' ) as $file ) {
 	$datetime = basename( $file );
-	$last_sunday = gmdate( 'n/j', strtotime( 'last Sunday', strtotime( $datetime ) ) );
-	if ( isset( $data[ $last_sunday ] ) ) {
+	$timestamp = strtotime( $datetime );
+	if ( strtotime( gmdate( 'Y-m-d 00:00:00', $timestamp ) ) > strtotime( '3 days ago', strtotime( gmdate( 'Y-m-d 00:00:00' ) ) ) ) {
+		$time_period = gmdate( 'n/j', $timestamp );
+	} else {
+		$time_period = gmdate( 'n/j', strtotime( 'last Sunday', strtotime( $datetime ) ) );
+	}
+	if ( isset( $data[ $time_period ] ) ) {
 		continue;
 	}
-	$data[ $last_sunday ] = file_get_contents( $file );
-	$labels[] = $last_sunday;
+	$data[ $time_period ] = file_get_contents( $file );
+	$labels[] = $time_period;
 }
 
 ?>
