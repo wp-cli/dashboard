@@ -48,12 +48,12 @@ new Chartist.Line('#open_issues', {
 </script>
 				</div>
 							<div class="grid-cell">
-					<h3><a href="https://github.com/issues?q=is%3Aopen%20org%3Awp-cli%20is%3Aissue%20sort%3Acreated-desc%20label%3Agood-first-issue" target="_blank">Good First Issues</a></h3>
-					<div id="open_issues_good_first_issue"></div>
+					<h3><a href="https://github.com/issues?q=is%3Aopen%20org%3Awp-cli%20is%3Aissue%20sort%3Acreated-desc%20no%3Alabel" target="_blank">Open Issues Without Label</a></h3>
+					<div id="open_issues_no_label"></div>
 <script>
-new Chartist.Line('#open_issues_good_first_issue', {
-	labels: ["11\/13","11\/20","11\/27","12\/4"],
-	series: [["35","36","36","36"]],
+new Chartist.Line('#open_issues_no_label', {
+	labels: ["10\/30","11\/6","11\/13","11\/20","11\/27","12\/4"],
+	series: [["371","371","333","332","335","325"]],
 }, {
 	low: 0,
 	onlyIntegers: true,
@@ -62,12 +62,12 @@ new Chartist.Line('#open_issues_good_first_issue', {
 </script>
 				</div>
 							<div class="grid-cell">
-					<h3><a href="https://github.com/issues?q=is%3Aopen%20org%3Awp-cli%20is%3Aissue%20sort%3Acreated-desc%20no%3Alabel" target="_blank">Open Issues Without Label</a></h3>
-					<div id="open_issues_no_label"></div>
+					<h3><a href="https://github.com/issues?q=is%3Aopen%20org%3Awp-cli%20is%3Aissue%20sort%3Acreated-desc%20label%3Agood-first-issue" target="_blank">Good First Issues</a></h3>
+					<div id="open_issues_good_first_issue"></div>
 <script>
-new Chartist.Line('#open_issues_no_label', {
-	labels: ["10\/30","11\/6","11\/13","11\/20","11\/27","12\/4"],
-	series: [["371","371","333","332","335","325"]],
+new Chartist.Line('#open_issues_good_first_issue', {
+	labels: ["11\/13","11\/20","11\/27","12\/4"],
+	series: [["35","36","36","36"]],
 }, {
 	low: 0,
 	onlyIntegers: true,
