@@ -1,5 +1,7 @@
 <?php
 
+require_once dirname( __DIR__ ) . '/theme/functions.php';
+
 /**
  * Builds the WP-CLI committer dashboard.
  *
@@ -7,23 +9,10 @@
  */
 function wp_cli_dashboard_build_dashboard( $args, $assoc_args ) {
 
-	define( 'WP_CLI_DASHBOARD_BASE_DIR', dirname( __DIR__ ) );
+	$html = wp_cli_dashboard_get_template_part( 'index' );
 
-
-	$html = <<<EOT
-<!DOCTYPE html>
-<html>
-<head>
-<title>WP-CLI Committer Dashboard</title>
-</head>
-
-<body>
-EOT;
-
-	$html .= '</body></html>';
-
-	file_put_contents( WP_CLI_DASHBOARD_BASE_DIR . '/index.html', $html );
-	WP_CLI::success( 'Dashboard built.' ); 
+	file_put_contents( WP_CLI_DASHBOARD_BASE_DIR . '/index.html', trim( $html ) );
+	WP_CLI::success( 'Dashboard built.' );
 }
 
 WP_CLI::add_command( 'dashboard build', 'wp_cli_dashboard_build_dashboard' );

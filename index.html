@@ -1,7 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>WP-CLI Committer Dashboard</title>
+<title>WP-CLI Contributor Dashboard</title>
+
+<style>
+.container {
+	max-width: 1024px;
+	padding-left: 12px;
+	padding-right: 12px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+<script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+
 </head>
 
-<body></body></html>
+<body>
+
+	<header class="container">
+		<h1>WP-CLI Contributor Dashboard</h1>
+	</header>
+
+	<main class="container">
+
+		<h2>Key Metrics</h2>
+
+		<div class="grid">
+										<div class="grid-cell">
+					<h3><a href="https://github.com/issues?q=is%3Aopen%20org%3Awp-cli%20is%3Aissue%20sort%3Acreated-desc" target="_blank">Open Issues</a></h3>
+					<div id="open_issues"></div>
+<script>
+new Chartist.Line('#open_issues', {
+	labels: ["10\/30","11\/6","11\/13","11\/20","11\/27","12\/4"],
+	series: [["777","777","772","770","775","765"]],
+}, {
+	low: 0,
+	onlyIntegers: true,
+	showPoint: false,
+});
+</script>
+				</div>
+							<div class="grid-cell">
+					<h3><a href="https://github.com/issues?q=is%3Aopen%20org%3Awp-cli%20is%3Aissue%20sort%3Acreated-desc%20label%3Agood-first-issue" target="_blank">Good First Issues</a></h3>
+					<div id="open_issues_good_first_issue"></div>
+<script>
+new Chartist.Line('#open_issues_good_first_issue', {
+	labels: ["11\/13","11\/20","11\/27","12\/4"],
+	series: [["35","36","36","36"]],
+}, {
+	low: 0,
+	onlyIntegers: true,
+	showPoint: false,
+});
+</script>
+				</div>
+							<div class="grid-cell">
+					<h3><a href="https://github.com/issues?q=is%3Aopen%20org%3Awp-cli%20is%3Aissue%20sort%3Acreated-desc%20no%3Alabel" target="_blank">Open Issues Without Label</a></h3>
+					<div id="open_issues_no_label"></div>
+<script>
+new Chartist.Line('#open_issues_no_label', {
+	labels: ["10\/30","11\/6","11\/13","11\/20","11\/27","12\/4"],
+	series: [["371","371","333","332","335","325"]],
+}, {
+	low: 0,
+	onlyIntegers: true,
+	showPoint: false,
+});
+</script>
+				</div>
+							<div class="grid-cell">
+					<h3><a href="https://github.com/issues?q=is%3Aopen%20sort%3Aupdated-desc%20org%3Awp-cli%20is%3Apr" target="_blank">Open Pull Requests</a></h3>
+					<div id="open_pull_requests"></div>
+<script>
+new Chartist.Line('#open_pull_requests', {
+	labels: ["10\/30","11\/6","11\/13","11\/20","11\/27","12\/4"],
+	series: [["70","70","66","12","12","13"]],
+}, {
+	low: 0,
+	onlyIntegers: true,
+	showPoint: false,
+});
+</script>
+				</div>
+			
+		</div>
+
+	</main>
+
+</body>
+</html>

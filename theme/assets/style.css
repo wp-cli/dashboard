@@ -1,0 +1,11 @@
+.container {
+	max-width: 1024px;
+	padding-left: 12px;
+	padding-right: 12px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
