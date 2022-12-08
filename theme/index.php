@@ -77,10 +77,34 @@
 			<?php
 			$github_repositories = wp_cli_dashboard_get_config_data( 'github_repositories' );
 			?>
-			<?php foreach ( $github_repositories as $repo ) : ?>
+			<?php
+				foreach ( $github_repositories as $repo ) :
+					$repo_short = str_replace( 'wp-cli/', '', $repo );
+					$repo_data = json_decode( file_get_contents( WP_CLI_DASHBOARD_BASE_DIR . '/github-data/repositories/' . $repo_short . '.json' ), true );
+				?>
 				<tr>
 					<td><a href="<?php echo sprintf( 'https://github.com/%s', $repo ); ?>" target="_blank"><?php echo $repo; ?></a></td>
-					<td></td>
+					<td>
+						<ul>
+							<li>Project: <a href="<?php echo sprintf( 'https://github.com/%s/issues', $repo ); ?>" target="_blank"><?php echo sprintf( '%d issues', $repo_data['open_issues'] ); ?></a>, <a href="<?php echo sprintf( 'https://github.com/%s/issues', $repo ); ?>" target="_blank"><?php echo sprintf( '%d pull requests', $repo_data['open_pull_requests'] ); ?></a></li>
+							<li>
+								Active:
+								<?php if ( ! empty( $repo_data['active_milestone'] ) ) : ?>
+									<a href="<?php echo $repo_data['active_milestone']['html_url']; ?>" target="_blank">v<?php echo $repo_data['active_milestone']['title']; ?></a> (<?php echo sprintf( '%d open', $repo_data['active_milestone']['open_issues'] ); ?>, <?php echo sprintf( '%d open', $repo_data['active_milestone']['closed_issues'] ); ?>)
+								<?php else: ?>
+									<em>None</em>
+								<?php endif; ?>
+							</li>
+							<li>
+								Latest:
+								<?php if ( ! empty( $repo_data['latest_release'] ) ) : ?>
+									<a href="<?php echo $repo_data['latest_release']['html_url']; ?>" target="_blank"><?php echo $repo_data['latest_release']['tag_name']; ?></a>
+								<?php else: ?>
+									<em>None</em>
+								<?php endif; ?>
+							</li>
+						</ul>
+					</td>
 					<td>
 						<?php if ( 'wp-cli/wp-cli-dev' !== $repo ) : ?>
 							<a href="<?php echo sprintf( 'https://github.com/%s/actions/workflows/testing.yml', $repo ); ?>" target="_blank"><img height="20px" src="<?php echo sprintf( 'https://github.com/%s/actions/workflows/testing.yml/badge.svg', $repo ); ?>" alt="Testing" style="max-width: 100%;"></a>
@@ -92,6 +116,10 @@
 		</table>
 
 	</main>
+
+	<footer class="container">
+		<p>Dashboard is rebuilt every 20 minutes. <a href="https://github.com/wp-cli/dashboard/issues">Create an issue</a> to suggest an improvement.</p>
+	</footer>
 
 </body>
 </html>
