@@ -36,7 +36,23 @@
 			$github_data = wp_cli_dashboard_get_config_data( 'github_data' );
 			?>
 			<?php
-				foreach ( $github_data as $key => $metric ) :
+				$sort_order = array(
+					'open_pull_requests_awaiting_review',
+					'open_pull_requests',
+					'open_issues_no_label',
+					'open_issues',
+				);
+				$sorted_data = array();
+				foreach ( $sort_order as $key ) {
+					$sorted_data[ $key ] = $github_data[ $key ];
+				}
+				foreach ( $github_data as $key => $metric ) {
+					if ( ! in_array( $key, $sort_order, true ) ) {
+						$sorted_data[ $key ] = $metric;
+					}
+				}
+
+				foreach ( $sorted_data as $key => $metric ) :
 					$link = 'https://github.com/issues?q=' . rawurlencode( $metric['search'] );
 				?>
 				<div class="grid-cell">
