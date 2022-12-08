@@ -53,7 +53,7 @@ jobs:
         run: |
           wp dashboard fetch-github-data
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MAKE_COFFEE_TOKEN }}
 
       - name: Rebuild dashboard
         run: |
