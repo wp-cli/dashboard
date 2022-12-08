@@ -91,7 +91,7 @@
 							<li>
 								Active:
 								<?php if ( ! empty( $repo_data['active_milestone'] ) ) : ?>
-									<a href="<?php echo $repo_data['active_milestone']['html_url']; ?>" target="_blank">v<?php echo $repo_data['active_milestone']['title']; ?></a> (<?php echo sprintf( '%d open', $repo_data['active_milestone']['open_issues'] ); ?>, <?php echo sprintf( '%d open', $repo_data['active_milestone']['closed_issues'] ); ?>)
+									<a href="<?php echo $repo_data['active_milestone']['html_url']; ?>" target="_blank">v<?php echo $repo_data['active_milestone']['title']; ?></a> (<?php echo sprintf( '%d open', $repo_data['active_milestone']['open_issues'] ); ?>, <?php echo sprintf( '%d closed', $repo_data['active_milestone']['closed_issues'] ); ?>)
 								<?php else: ?>
 									<em>None</em>
 								<?php endif; ?>
