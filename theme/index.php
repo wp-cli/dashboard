@@ -25,6 +25,7 @@
 
 	<header class="container">
 		<h1>WP-CLI Contributor Dashboard</h1>
+		<p>Dashboard is rebuilt every 20 minutes. <a href="https://github.com/wp-cli/dashboard/issues" target="_blank">Create an issue</a> to suggest an improvement.</p>
 	</header>
 
 	<main class="container">
@@ -118,7 +119,6 @@
 	</main>
 
 	<footer class="container">
-		<p>Dashboard is rebuilt every 20 minutes. <a href="https://github.com/wp-cli/dashboard/issues">Create an issue</a> to suggest an improvement.</p>
 	</footer>
 
 </body>
