@@ -37,40 +37,12 @@
 
 		<div class="grid">
 										<div class="grid-cell">
-					<h3><a href="https://github.com/issues?q=is%3Aopen%20org%3Awp-cli%20is%3Aissue%20sort%3Acreated-desc" target="_blank">Open Issues</a></h3>
-					<div id="open_issues"></div>
+					<h3><a href="https://github.com/issues?q=is%3Aopen%20sort%3Aupdated-desc%20org%3Awp-cli%20is%3Apr%20team-review-requested%3Awp-cli%2Fcommitters" target="_blank">Open Pull Requests Awaiting Review</a></h3>
+					<div id="open_pull_requests_awaiting_review"></div>
 <script>
-new Chartist.Line('#open_issues', {
-	labels: ["10\/30","11\/6","11\/13","11\/20","11\/27","12\/4"],
-	series: [["777","777","772","770","775","765"]],
-}, {
-	low: 0,
-	onlyIntegers: true,
-	showPoint: false,
-});
-</script>
-				</div>
-							<div class="grid-cell">
-					<h3><a href="https://github.com/issues?q=is%3Aopen%20org%3Awp-cli%20is%3Aissue%20sort%3Acreated-desc%20no%3Alabel" target="_blank">Open Issues Without Label</a></h3>
-					<div id="open_issues_no_label"></div>
-<script>
-new Chartist.Line('#open_issues_no_label', {
-	labels: ["10\/30","11\/6","11\/13","11\/20","11\/27","12\/4"],
-	series: [["371","371","333","332","335","325"]],
-}, {
-	low: 0,
-	onlyIntegers: true,
-	showPoint: false,
-});
-</script>
-				</div>
-							<div class="grid-cell">
-					<h3><a href="https://github.com/issues?q=is%3Aopen%20org%3Awp-cli%20is%3Aissue%20sort%3Acreated-desc%20label%3Agood-first-issue" target="_blank">Good First Issues</a></h3>
-					<div id="open_issues_good_first_issue"></div>
-<script>
-new Chartist.Line('#open_issues_good_first_issue', {
-	labels: ["11\/13","11\/20","11\/27","12\/4"],
-	series: [["35","36","36","36"]],
+new Chartist.Line('#open_pull_requests_awaiting_review', {
+	labels: ["12\/8"],
+	series: [["3"]],
 }, {
 	low: 0,
 	onlyIntegers: true,
@@ -83,8 +55,8 @@ new Chartist.Line('#open_issues_good_first_issue', {
 					<div id="open_pull_requests"></div>
 <script>
 new Chartist.Line('#open_pull_requests', {
-	labels: ["10\/30","11\/6","11\/13","11\/20","11\/27","12\/4"],
-	series: [["70","70","66","12","12","13"]],
+	labels: ["10\/30","11\/6","11\/13","11\/20","11\/27","12\/4","12\/6","12\/7","12\/8"],
+	series: [["70","70","66","12","12","13","14","15","12"]],
 }, {
 	low: 0,
 	onlyIntegers: true,
@@ -93,12 +65,40 @@ new Chartist.Line('#open_pull_requests', {
 </script>
 				</div>
 							<div class="grid-cell">
-					<h3><a href="https://github.com/issues?q=is%3Aopen%20sort%3Aupdated-desc%20org%3Awp-cli%20is%3Apr%20team-review-requested%3Awp-cli%2Fcommitters" target="_blank">Open Pull Requests Awaiting Review</a></h3>
-					<div id="open_pull_requests_awaiting_review"></div>
+					<h3><a href="https://github.com/issues?q=is%3Aopen%20org%3Awp-cli%20is%3Aissue%20sort%3Acreated-desc%20no%3Alabel" target="_blank">Open Issues Without Label</a></h3>
+					<div id="open_issues_no_label"></div>
 <script>
-new Chartist.Line('#open_pull_requests_awaiting_review', {
-	labels: ["12\/4"],
-	series: [["3"]],
+new Chartist.Line('#open_issues_no_label', {
+	labels: ["10\/30","11\/6","11\/13","11\/20","11\/27","12\/4","12\/6","12\/7","12\/8"],
+	series: [["371","371","333","332","335","325","324","324","325"]],
+}, {
+	low: 0,
+	onlyIntegers: true,
+	showPoint: false,
+});
+</script>
+				</div>
+							<div class="grid-cell">
+					<h3><a href="https://github.com/issues?q=is%3Aopen%20org%3Awp-cli%20is%3Aissue%20sort%3Acreated-desc" target="_blank">Open Issues</a></h3>
+					<div id="open_issues"></div>
+<script>
+new Chartist.Line('#open_issues', {
+	labels: ["10\/30","11\/6","11\/13","11\/20","11\/27","12\/4","12\/6","12\/7","12\/8"],
+	series: [["777","777","772","770","775","765","765","764","762"]],
+}, {
+	low: 0,
+	onlyIntegers: true,
+	showPoint: false,
+});
+</script>
+				</div>
+							<div class="grid-cell">
+					<h3><a href="https://github.com/issues?q=is%3Aopen%20org%3Awp-cli%20is%3Aissue%20sort%3Acreated-desc%20label%3Agood-first-issue" target="_blank">Good First Issues</a></h3>
+					<div id="open_issues_good_first_issue"></div>
+<script>
+new Chartist.Line('#open_issues_good_first_issue', {
+	labels: ["11\/13","11\/20","11\/27","12\/4","12\/6","12\/7","12\/8"],
+	series: [["35","36","36","36","36","37","35"]],
 }, {
 	low: 0,
 	onlyIntegers: true,
