@@ -7,6 +7,9 @@ require_once dirname( __DIR__ ) . '/theme/functions.php';
  *
  * ## OPTIONS
  *
+ * [--only-data]
+ * : Only update the data points, not the repositories.
+ *
  * [--force]
  * : Forcefully overwrite any existing data.
  *
@@ -76,84 +79,86 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 		WP_CLI::log( sprintf( 'Saved: Total count for %s on %s: %d', $key, $time, $total_count ) );
 	}
 
-	WP_CLI::log( sprintf( 'Fetching %d GitHub repository data...', count( $config['github_repositories'] ) ) );
-	foreach ( $config['github_repositories'] as $repo ) {
+	if ( ! WP_CLI\Utils\get_flag_value( $assoc_args, 'only-data' ) ) {
+		WP_CLI::log( sprintf( 'Fetching %d GitHub repository data...', count( $config['github_repositories'] ) ) );
+		foreach ( $config['github_repositories'] as $repo ) {
 
-		$repo_short = str_replace( 'wp-cli/', '', $repo );
+			$repo_short = str_replace( 'wp-cli/', '', $repo );
 
-		$path = WP_CLI_DASHBOARD_BASE_DIR . '/github-data/repositories/' . $repo_short . '.json';
-		$repository_data = array(
-			'open_issues'        => null,
-			'open_pull_requests' => null,
-			'active_milestone'   => null,
-			'latest_release'     => null,
-		);
-
-		$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s', $repo ), array(), $headers );
-		if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
-			WP_CLI::error(
-				sprintf(
-					"Failed request. GitHub API returned: %s (HTTP code %d)",
-					$response->body,
-					$response->status_code
-				)
+			$path = WP_CLI_DASHBOARD_BASE_DIR . '/github-data/repositories/' . $repo_short . '.json';
+			$repository_data = array(
+				'open_issues'        => null,
+				'open_pull_requests' => null,
+				'active_milestone'   => null,
+				'latest_release'     => null,
 			);
-		}
-		$data = json_decode( $response->body );
-		$repository_data['open_issues'] = $data->open_issues;
 
-		$query = array(
-			'per_page' => 100,
-		);
-		$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s/pulls', $repo ), $query, $headers );
-		if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
-			WP_CLI::error(
-				sprintf(
-					"Failed request. GitHub API returned: %s (HTTP code %d)",
-					$response->body,
-					$response->status_code
-				)
+			$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s', $repo ), array(), $headers );
+			if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
+				WP_CLI::error(
+					sprintf(
+						"Failed request. GitHub API returned: %s (HTTP code %d)",
+						$response->body,
+						$response->status_code
+					)
+				);
+			}
+			$data = json_decode( $response->body );
+			$repository_data['open_issues'] = $data->open_issues;
+
+			$query = array(
+				'per_page' => 100,
 			);
-		}
-		$data = json_decode( $response->body );
-		$repository_data['open_pull_requests'] = count( $data );
-		$repository_data['open_issues'] = $repository_data['open_issues'] - $repository_data['open_pull_requests'];
+			$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s/pulls', $repo ), $query, $headers );
+			if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
+				WP_CLI::error(
+					sprintf(
+						"Failed request. GitHub API returned: %s (HTTP code %d)",
+						$response->body,
+						$response->status_code
+					)
+				);
+			}
+			$data = json_decode( $response->body );
+			$repository_data['open_pull_requests'] = count( $data );
+			$repository_data['open_issues'] = $repository_data['open_issues'] - $repository_data['open_pull_requests'];
 
-		$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s/milestones', $repo ), array(), $headers );
-		if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
-			WP_CLI::error(
-				sprintf(
-					"Failed request. GitHub API returned: %s (HTTP code %d)",
-					$response->body,
-					$response->status_code
-				)
-			);
-		}
-		$data = json_decode( $response->body );
-		if ( ! empty( $data ) ) {
-			$repository_data['active_milestone'] = array_shift( $data );
-		}
+			$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s/milestones', $repo ), array(), $headers );
+			if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
+				WP_CLI::error(
+					sprintf(
+						"Failed request. GitHub API returned: %s (HTTP code %d)",
+						$response->body,
+						$response->status_code
+					)
+				);
+			}
+			$data = json_decode( $response->body );
+			if ( ! empty( $data ) ) {
+				$repository_data['active_milestone'] = array_shift( $data );
+			}
 
-		$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s/releases', $repo ), array(), $headers );
-		if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
-			WP_CLI::error(
-				sprintf(
-					"Failed request. GitHub API returned: %s (HTTP code %d)",
-					$response->body,
-					$response->status_code
-				)
-			);
-		}
-		$data = json_decode( $response->body );
-		if ( ! empty( $data ) ) {
-			$repository_data['latest_release'] = array_shift( $data );
-		}
+			$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s/releases', $repo ), array(), $headers );
+			if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
+				WP_CLI::error(
+					sprintf(
+						"Failed request. GitHub API returned: %s (HTTP code %d)",
+						$response->body,
+						$response->status_code
+					)
+				);
+			}
+			$data = json_decode( $response->body );
+			if ( ! empty( $data ) ) {
+				$repository_data['latest_release'] = array_shift( $data );
+			}
 
-		if ( ! is_dir( dirname( $path ) ) ) {
-			mkdir( dirname( $path ), 0777, true );
+			if ( ! is_dir( dirname( $path ) ) ) {
+				mkdir( dirname( $path ), 0777, true );
+			}
+			file_put_contents( $path, json_encode( $repository_data ) );
+			WP_CLI::log( sprintf( 'Saved: %s', $repo ) );
 		}
-		file_put_contents( $path, json_encode( $repository_data ) );
-		WP_CLI::log( sprintf( 'Saved: %s', $repo ) );
 	}
 
 	WP_CLI::success( 'Fetch data complete.' );
