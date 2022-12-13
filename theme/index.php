@@ -42,6 +42,7 @@
 					'open_pull_requests',
 					'open_issues_no_label',
 					'open_issues',
+					'open_issues_label_bug',
 				);
 				$sorted_data = array();
 				foreach ( $sort_order as $key ) {
