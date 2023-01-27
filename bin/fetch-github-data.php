@@ -112,7 +112,7 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 				}
 				$data = json_decode( $response->body );
 				foreach ( $data as $event ) {
-					if ( false !== stripos( $event->actor->login, '[bot]' ) ) {
+					if ( empty( $event->actor ) || false !== stripos( $event->actor->login, '[bot]' ) ) {
 						continue;
 					}
 					if ( ! isset( $actors[ $event->actor->login ] ) ) {
