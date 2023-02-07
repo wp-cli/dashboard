@@ -102,13 +102,25 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 				);
 				$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s/issues/events', $repo ), $query, $headers );
 				if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
-					WP_CLI::error(
+					WP_CLI::warning(
 						sprintf(
 							"Failed request. GitHub API returned: %s (HTTP code %d)",
 							$response->body,
 							$response->status_code
 						)
 					);
+					sleep( 60 );
+					$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s/issues/events', $repo ), $query, $headers );
+					if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
+						WP_CLI::warning(
+							sprintf(
+								"Failed request again. GitHub API returned: %s (HTTP code %d)",
+								$response->body,
+								$response->status_code
+							)
+						);
+						break;
+					}
 				}
 				$data = json_decode( $response->body );
 				foreach ( $data as $event ) {
