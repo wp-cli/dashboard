@@ -65,6 +65,34 @@
 
 		</div>
 
+		<h2>Contributors</h2>
+
+		<div class="grid">
+			<div class="grid-cell">
+				<h3>New Contributors (Past 30 Days)</h3>
+				<?php
+				$new_contributors = [];
+				foreach ( glob( WP_CLI_DASHBOARD_BASE_DIR . '/github-data/contributors/*' ) as $file ) {
+					$contributor = basename( $file );
+					$dates       = explode( PHP_EOL, file_get_contents( $file ) );
+					$is_new      = false;
+					foreach ( $dates as $date ) {
+						if ( strtotime( $date ) > strtotime( '30 days ago' ) ) {
+							$is_new = true;
+						}
+						if ( strtotime( $date ) < strtotime( '30 days ago' ) ) {
+							$is_new = false;
+						}
+					}
+					if ( $is_new ) {
+						$new_contributors[] = '<a href="' . sprintf( 'https://github.com/%s', $contributor ) . '" target="_blank">' . $contributor . '</a>';
+					}
+				}
+				?>
+				<p><?php echo ! empty( $new_contributors ) ? implode( ', ', $new_contributors ) : '<em>None</em>'; ?></p>
+			</div>
+		</div>
+
 		<h2>Repositories</h2>
 
 		<table>
