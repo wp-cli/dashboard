@@ -1,9 +1,9 @@
 name: Fetch GitHub data and rebuild dashboard
 
 on:
-  workflow_dispatch:
-  schedule:
-    - cron:  '*/20 * * * *' # Run every 20 minutes.
+  # workflow_dispatch:
+  # schedule:
+  #   - cron:  '*/20 * * * *' # Run every 20 minutes.
 
 # Cancels all previous workflow runs for the same branch that have not yet completed.
 concurrency:
