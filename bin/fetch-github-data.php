@@ -89,6 +89,7 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 
 	if ( empty( $assoc_args['only'] ) || 'contributors' === $assoc_args['only'] ) {
 		WP_CLI::log( sprintf( 'Fetching GitHub contributor data for %d repositories...', count( $config['github_repositories'] ) ) );
+		$event_types = array();
 		foreach ( $config['github_repositories'] as $repo ) {
 
 			$actors           = array();
@@ -127,6 +128,10 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 					if ( empty( $event->actor ) || false !== stripos( $event->actor->login, '[bot]' ) ) {
 						continue;
 					}
+					if ( in_array( $event->event, [ 'subscribed', 'mentioned'], true ) ) {
+						continue;
+					}
+					$event_types[] = $event->event;
 					if ( ! isset( $actors[ $event->actor->login ] ) ) {
 						$actors[ $event->actor->login ] = array();
 					}
@@ -151,11 +156,11 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 				file_put_contents( $path, implode( PHP_EOL, $dates ) );
 			}
 
-			if ( ! is_dir( dirname( $path ) ) ) {
-				mkdir( dirname( $path ), 0777, true );
-			}
-
 		}
+		$event_types = array_unique( $event_types );
+		sort( $event_types );
+		$path = WP_CLI_DASHBOARD_BASE_DIR . '/github-data/contributor-event-types';
+		file_put_contents( $path, implode( PHP_EOL, $event_types ) );
 	}
 
 	if ( empty( $assoc_args['only'] ) || 'repositories' === $assoc_args['only'] ) {
