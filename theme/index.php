@@ -71,7 +71,8 @@
 			<div class="grid-cell">
 				<h3>New Contributors (Past 30 Days)</h3>
 				<?php
-				$new_contributors = [];
+				$new_contributors  = [];
+				$new_contrib_users = [];
 				foreach ( glob( WP_CLI_DASHBOARD_BASE_DIR . '/github-data/contributors/*' ) as $file ) {
 					$contributor = basename( $file );
 					$dates       = explode( PHP_EOL, file_get_contents( $file ) );
@@ -85,11 +86,36 @@
 						}
 					}
 					if ( $is_new ) {
-						$new_contributors[] = '<a href="' . sprintf( 'https://github.com/%s', $contributor ) . '" target="_blank">' . $contributor . '</a>';
+						$new_contrib_users[] = $contributor;
+						$new_contributors[]  = '<a href="' . sprintf( 'https://github.com/%s', $contributor ) . '" target="_blank">' . $contributor . '</a>';
 					}
 				}
 				?>
 				<p><?php echo ! empty( $new_contributors ) ? implode( ', ', $new_contributors ) : '<em>None</em>'; ?></p>
+			</div>
+			<div class="grid-cell">
+				<h3>Active Contributors (Past 30 Days)</h3>
+				<?php
+				$active_contributors = [];
+				foreach ( glob( WP_CLI_DASHBOARD_BASE_DIR . '/github-data/contributors/*' ) as $file ) {
+					$contributor = basename( $file );
+					if ( in_array( $contributor, $new_contrib_users, true ) ) {
+						continue;
+					}
+					$dates     = explode( PHP_EOL, file_get_contents( $file ) );
+					$is_active = false;
+					foreach ( $dates as $date ) {
+						if ( strtotime( $date ) > strtotime( '30 days ago' ) ) {
+							$is_active = true;
+							break;
+						}
+					}
+					if ( $is_active ) {
+						$active_contributors[] = '<a href="' . sprintf( 'https://github.com/%s', $contributor ) . '" target="_blank">' . $contributor . '</a>';
+					}
+				}
+				?>
+				<p><?php echo ! empty( $active_contributors ) ? implode( ', ', $active_contributors ) : '<em>None</em>'; ?></p>
 			</div>
 		</div>
 
