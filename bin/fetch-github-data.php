@@ -95,13 +95,17 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 			$actors           = array();
 			$repo_short       = str_replace( 'wp-cli/', '', $repo );
 			$most_recent_date = strtotime( '2 weeks ago' );
-			$page             = 1;
+
+			WP_CLI::log( sprintf( ' - %s', $repo ) );
+
+			$query      = array(
+				'per_page' => 100,
+				'state'    => 'all',
+				'since'    => gmdate( DATE_ATOM, $most_recent_date ),
+			);
+			$issues_api = sprintf( 'https://api.github.com/repos/%s/issues', $repo ) . '?' . http_build_query( $query );
 			do {
-				$query    = array(
-					'page'     => $page,
-					'per_page' => 100,
-				);
-				$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s/issues/events', $repo ), $query, $headers );
+				$response = WP_CLI\Utils\http_request( 'GET', $issues_api, array(), $headers );
 				if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
 					WP_CLI::warning(
 						sprintf(
@@ -110,36 +114,50 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 							$response->status_code
 						)
 					);
-					sleep( 60 );
-					$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s/issues/events', $repo ), $query, $headers );
-					if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
-						WP_CLI::warning(
-							sprintf(
-								"Failed request again. GitHub API returned: %s (HTTP code %d)",
-								$response->body,
-								$response->status_code
-							)
-						);
-						break;
-					}
+					break;
 				}
-				$data = json_decode( $response->body );
-				foreach ( $data as $event ) {
-					if ( empty( $event->actor ) || false !== stripos( $event->actor->login, '[bot]' ) ) {
+				preg_match( "/<(.*)>; rel=\"next\"/", $response->headers['link'], $matches );
+				$issues_api = ! empty( $matches ) ? $matches[1] : '';
+				$issues = json_decode( $response->body );
+				foreach ( $issues as $issue ) {
+					if ( empty( $issue->user ) || false !== stripos( $issue->user->login, '[bot]' ) ) {
 						continue;
 					}
-					if ( in_array( $event->event, [ 'subscribed', 'mentioned'], true ) ) {
-						continue;
+					if ( ! isset( $actors[ $issue->user->login ] ) ) {
+						$actors[ $issue->user->login ] = array();
 					}
-					$event_types[] = $event->event;
-					if ( ! isset( $actors[ $event->actor->login ] ) ) {
-						$actors[ $event->actor->login ] = array();
-					}
-					$event_time                       = strtotime( $event->created_at );
-					$actors[ $event->actor->login ][] = gmdate( 'Y-m-d', $event_time );
+					$event_time                      = strtotime( $issue->created_at );
+					$actors[ $issue->user->login ][] = gmdate( 'Y-m-d', $event_time );
+
+					$comments_api = $issue->comments_url . '?' . http_build_query( array( 'per_page' => 100 ) );
+					do {
+						$response = WP_CLI\Utils\http_request( 'GET', $comments_api, array(), $headers );
+						if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
+							WP_CLI::warning(
+								sprintf(
+									"Failed request. GitHub API returned: %s (HTTP code %d)",
+									$response->body,
+									$response->status_code
+								)
+							);
+							break;
+						}
+						$comments = json_decode( $response->body );
+						foreach ( $comments as $comment ) {
+							if ( empty( $comment->user ) ) {
+								continue;
+							}
+							if ( ! isset( $actors[ $comment->user->login ] ) ) {
+								$actors[ $comment->user->login ] = array();
+							}
+							$event_time                      = strtotime( $comment->created_at );
+							$actors[ $comment->user->login ][] = gmdate( 'Y-m-d', $event_time );
+						}
+						preg_match( "/<(.*)>; rel=\"next\"/", $response->headers['link'], $matches );
+						$comments_api = ! empty( $matches ) ? $matches[1] : '';
+					} while ( $comments_api );
 				}
-				$page++;
-			} while ( $most_recent_date < $event_time );
+			} while ( $issues_api );
 
 			foreach ( $actors as $login => $dates ) {
 				$path     = WP_CLI_DASHBOARD_BASE_DIR . '/github-data/contributors/' . $login;
