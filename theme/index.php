@@ -93,6 +93,52 @@
 				?>
 				<p><?php echo ! empty( $new_contributors ) ? implode( ', ', $new_contributors ) : '<em>None</em>'; ?></p>
 			</div>
+			<div class="grid-cell" style="grid-column: span 2">
+				<h3>New Contributors (Past 12 Months)</h3>
+				<?php
+				$new_contributors = [];
+				$all_new_contribs = [];
+				for ( $i = 0; $i < 12; $i++ ) {
+					$new_contributors[ gmdate( 'Y-m', strtotime( '-' . $i . ' months' ) ) ] = [];
+				}
+				foreach ( glob( WP_CLI_DASHBOARD_BASE_DIR . '/github-data/contributors/*' ) as $file ) {
+					$contributor   = basename( $file );
+					$dates         = explode( PHP_EOL, file_get_contents( $file ) );
+					foreach ( $dates as $date ) {
+						if ( strtotime( $date ) > strtotime( '12 months ago' ) ) {
+							$is_new = true;
+						}
+						if ( strtotime( $date ) < strtotime( '12 months ago' ) ) {
+							$is_new = false;
+						}
+					}
+
+					if ( $is_new ) {
+						$first_seen = gmdate( 'Y-m', strtotime( array_pop( $dates ) ) );
+						$new_contributors[ $first_seen ][] = $contributor;
+						$all_new_contribs[] = $contributor;
+					}
+				}
+				ksort( $new_contributors );
+				$data = array();
+				$labels = array();
+				foreach ( $new_contributors as $month => $contributors ) {
+					$data[] = count( array_unique( $contributors ) );
+					$labels[] = $month;
+				}
+				?>
+				<div id="new-contributors"></div>
+				<script>
+				new Chartist.Line('#new-contributors', {
+					labels: <?php echo json_encode( $labels ); ?>,
+					series: <?php echo json_encode( array( array_values( $data ) ) ); ?>,
+				}, {
+					low: 0,
+					onlyIntegers: true,
+					showPoint: false,
+				});
+				</script>
+			</div>
 			<div class="grid-cell">
 				<h3>Active Contributors (Past 30 Days)</h3>
 				<?php
@@ -116,6 +162,48 @@
 				}
 				?>
 				<p><?php echo ! empty( $active_contributors ) ? implode( ', ', $active_contributors ) : '<em>None</em>'; ?></p>
+			</div>
+			<div class="grid-cell" style="grid-column: span 2">
+				<h3>Active Contributors (Past 12 Months)</h3>
+				<?php
+				$active_contributors = [];
+				for ( $i = 0; $i < 12; $i++ ) {
+					$active_contributors[ gmdate( 'Y-m', strtotime( '-' . $i . ' months' ) ) ] = [];
+				}
+				foreach ( glob( WP_CLI_DASHBOARD_BASE_DIR . '/github-data/contributors/*' ) as $file ) {
+					$contributor = basename( $file );
+					if ( in_array( $contributor, $all_new_contribs, true ) ) {
+						continue;
+					}
+					$dates = explode( PHP_EOL, file_get_contents( $file ) );
+					foreach ( $dates as $date ) {
+						if ( strtotime( $date ) > strtotime( '12 months ago' ) ) {
+							$seen = gmdate( 'Y-m', strtotime( $date ) );
+							$active_contributors[ $seen ][] = $contributor;
+						}
+					}
+				}
+				ksort( $active_contributors );
+				$data = array();
+				$labels = array();
+				foreach ( $active_contributors as $month => $contributors ) {
+					$data[] = count( array_unique( $contributors ) );
+					$labels[] = $month;
+				}
+				error_log( var_export( $data, true ) );
+				error_log( var_export( $labels, true ) );
+				?>
+				<div id="active-contributors"></div>
+				<script>
+				new Chartist.Line('#active-contributors', {
+					labels: <?php echo json_encode( $labels ); ?>,
+					series: <?php echo json_encode( array( array_values( $data ) ) ); ?>,
+				}, {
+					low: 0,
+					onlyIntegers: true,
+					showPoint: false,
+				});
+				</script>
 			</div>
 		</div>
 
