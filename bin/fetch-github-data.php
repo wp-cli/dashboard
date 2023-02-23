@@ -89,7 +89,6 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 
 	if ( empty( $assoc_args['only'] ) || 'contributors' === $assoc_args['only'] ) {
 		WP_CLI::log( sprintf( 'Fetching GitHub contributor data for %d repositories...', count( $config['github_repositories'] ) ) );
-		$event_types = array();
 		foreach ( $config['github_repositories'] as $repo ) {
 
 			$actors           = array();
@@ -179,10 +178,6 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 			}
 
 		}
-		$event_types = array_unique( $event_types );
-		sort( $event_types );
-		$path = WP_CLI_DASHBOARD_BASE_DIR . '/github-data/contributor-event-types';
-		file_put_contents( $path, implode( PHP_EOL, $event_types ) );
 	}
 
 	if ( empty( $assoc_args['only'] ) || 'repositories' === $assoc_args['only'] ) {
