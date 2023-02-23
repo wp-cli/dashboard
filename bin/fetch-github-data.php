@@ -105,7 +105,9 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 			);
 			$issues_api = sprintf( 'https://api.github.com/repos/%s/issues', $repo ) . '?' . http_build_query( $query );
 			do {
-				$response = WP_CLI\Utils\http_request( 'GET', $issues_api, array(), $headers );
+				$response = WP_CLI\Utils\http_request( 'GET', $issues_api, array(), $headers, array(
+					'timeout' => 30,
+				) );
 				if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
 					WP_CLI::warning(
 						sprintf(
@@ -131,7 +133,9 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 
 					$comments_api = $issue->comments_url . '?' . http_build_query( array( 'per_page' => 100 ) );
 					do {
-						$response = WP_CLI\Utils\http_request( 'GET', $comments_api, array(), $headers );
+						$response = WP_CLI\Utils\http_request( 'GET', $comments_api, array(), $headers, array(
+							'timeout' => 30,
+						) );
 						if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
 							WP_CLI::warning(
 								sprintf(
