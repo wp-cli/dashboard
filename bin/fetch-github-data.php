@@ -194,7 +194,9 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 				'latest_release'     => null,
 			);
 
-			$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s', $repo ), array(), $headers );
+			$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s', $repo ), array(), $headers, array(
+				'timeout' => 30,
+			) );
 			if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
 				WP_CLI::error(
 					sprintf(
@@ -210,7 +212,9 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 			$query = array(
 				'per_page' => 100,
 			);
-			$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s/pulls', $repo ), $query, $headers );
+			$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s/pulls', $repo ), $query, $headers, array(
+				'timeout' => 30,
+			) );
 			if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
 				WP_CLI::error(
 					sprintf(
@@ -224,7 +228,9 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 			$repository_data['open_pull_requests'] = count( $data );
 			$repository_data['open_issues'] = $repository_data['open_issues'] - $repository_data['open_pull_requests'];
 
-			$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s/milestones', $repo ), array(), $headers );
+			$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s/milestones', $repo ), array(), $headers, array(
+				'timeout' => 30,
+			) );
 			if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
 				WP_CLI::error(
 					sprintf(
@@ -239,7 +245,9 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 				$repository_data['active_milestone'] = array_shift( $data );
 			}
 
-			$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s/releases', $repo ), array(), $headers );
+			$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s/releases', $repo ), array(), $headers, array(
+				'timeout' => 30,
+			) );
 			if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
 				WP_CLI::error(
 					sprintf(
