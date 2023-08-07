@@ -1,3 +1,4 @@
 require:
   - bin/fetch-github-data.php
   - bin/build-dashboard.php
+  - bin/recent-contributors.php
