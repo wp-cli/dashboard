@@ -230,7 +230,7 @@
 					<td><a href="<?php echo sprintf( 'https://github.com/%s', $repo ); ?>" target="_blank"><?php echo $repo; ?></a></td>
 					<td>
 						<ul>
-							<li>Project: <a href="<?php echo sprintf( 'https://github.com/%s/issues', $repo ); ?>" target="_blank"><?php echo sprintf( '%d issues', $repo_data['open_issues'] ); ?></a>, <a href="<?php echo sprintf( 'https://github.com/%s/issues', $repo ); ?>" target="_blank"><?php echo sprintf( '%d pull requests', $repo_data['open_pull_requests'] ); ?></a></li>
+							<li>Project: <a href="<?php echo sprintf( 'https://github.com/%s/issues', $repo ); ?>" target="_blank"><?php echo sprintf( '%d issues', $repo_data['open_issues'] ); ?></a>, <a href="<?php echo sprintf( 'https://github.com/%s/pulls', $repo ); ?>" target="_blank"><?php echo sprintf( '%d pull requests', $repo_data['open_pull_requests'] ); ?></a></li>
 							<li>
 								Active:
 								<?php if ( ! empty( $repo_data['active_milestone'] ) ) : ?>
