@@ -4,47 +4,293 @@
 <title>WP-CLI Contributor Dashboard</title>
 
 <style>
+/* General Body Styles */
+body {
+	font-family: 'Inter', sans-serif; /* A modern, clean sans-serif font */
+	margin: 0;
+	background-color: #f8f8f8; /* Light background for the entire page */
+	color: #333; /* Darker text for readability */
+	line-height: 1.6;
+}
+
+/* Container for overall layout */
 .container {
 	max-width: 1024px;
-	padding-left: 12px;
-	padding-right: 12px;
+	padding: 24px 16px; /* More generous padding */
 	margin-left: auto;
 	margin-right: auto;
 }
-.grid {
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
+
+/* Header Styles */
+header.container {
+	background-color: #2c3e50; /* Dark blue background for the header */
+	color: #fff; /* White text for contrast */
+	padding: 40px 16px; /* More padding for a prominent header */
+	text-align: center;
+	border-bottom: 5px solid #2ecc71; /* Accent border at the bottom */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
+header h1 {
+	font-size: 2.5em; /* Larger heading for impact */
+	margin-top: 0;
+	margin-bottom: 10px;
+	font-weight: 700; /* Bolder font weight */
+}
+
+header p {
+	font-size: 1.1em;
+	opacity: 0.9; /* Slightly translucent text */
+}
+
+header a {
+	color: #95a5a6; /* Lighter color for links in header */
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+header a:hover {
+	color: #ecf0f1; /* Brighter on hover */
+	text-decoration: underline;
+}
+
+/* Main Content Headings */
+h2 {
+	font-size: 2em;
+	color: #2c3e50; /* Matching header color */
+	margin-top: 40px;
+	margin-bottom: 20px;
+	text-align: center;
+	position: relative;
+}
+
+h2::after {
+	content: '';
+	display: block;
+	width: 60px;
+	height: 3px;
+	background-color: #2ecc71; /* Accent line below headings */
+	margin: 10px auto 0;
+	border-radius: 2px;
+}
+
+/* Grid Layout for Metrics and Contributors */
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+	gap: 24px; /* Spacing between grid cells */
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+
+.grid-cell {
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 8px; /* Rounded corners for cells */
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Softer shadow */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.grid-cell:hover {
+	transform: translateY(-5px); /* Lift effect on hover */
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.grid-cell h3 {
+	font-size: 1.3em;
+	margin-top: 0;
+	margin-bottom: 15px;
+	color: #34495e; /* Slightly darker heading color */
+}
+
+.grid-cell h3 a {
+	text-decoration: none;
+	color: #34495e;
+	transition: color 0.3s ease;
+}
+
+.grid-cell h3 a:hover {
+	color: #2ecc71; /* Accent color on hover */
+}
+
+.grid-cell p {
+	margin-bottom: 0;
+	font-size: 0.95em;
+	color: #555;
+}
+
+.grid-cell p a {
+	color: #3498db; /* Blue for links */
+	text-decoration: none;
+}
+
+.grid-cell p a:hover {
+	text-decoration: underline;
+}
+
+/* Chartist.js Chart Styling (adjust as needed based on chartist defaults) */
+.ct-chart {
+	position: relative;
+	height: 200px; /* Fixed height for charts */
+	margin-top: 10px;
+}
+
+.ct-series-a .ct-line {
+	stroke: #2ecc71; /* Accent color for lines */
+	stroke-width: 3px;
+}
+
+.ct-label {
+	font-size: 0.8em;
+	fill: rgba(0, 0, 0, 0.4);
+	color: rgba(0, 0, 0, 0.4);
+}
+
+/* Table Styles */
 table {
 	width: 100%;
-	border: 1px solid #ccc;
-	border-collapse: collapse;
+	border-collapse: separate; /* Use separate to allow border-radius on cells */
+	border-spacing: 0; /* Remove spacing between cells */
+	margin-top: 30px;
+	margin-bottom: 50px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Table shadow */
+	border-radius: 8px; /* Rounded table corners */
+	overflow: hidden; /* Ensures content respects border-radius */
 }
 
 table thead {
-	text-align: left;
-	background-color: #EFEFEF;
+	background-color: #e0e8e7; /* Lighter header background */
+	color: #34495e; /* Darker text for header */
 }
 
 table th,
 table td {
-	padding: 16px;
-	border-left: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
+	padding: 16px 20px;
+	border-bottom: 1px solid #eee; /* Lighter border */
+	text-align: left;
 }
 
-table th:first-of-type,
-table td:first-of-type {
-	border-left: none;
+table th:first-child {
+	border-top-left-radius: 8px;
+}
+
+table th:last-child {
+	border-top-right-radius: 8px;
+}
+
+table tbody tr:last-child td {
+	border-bottom: none;
+}
+
+table tbody tr:nth-child(even) {
+	background-color: #fdfdfd; /* Zebra striping for rows */
+}
+
+table tbody tr:hover {
+	background-color: #f0f0f0; /* Subtle hover effect on rows */
+	transition: background-color 0.2s ease;
 }
 
 table th.repository {
-	width: 220px;
+	width: 220px; /* Keep original width for this column */
 }
 
 table th.build-status {
-	width: 120px;
+	width: 120px; /* Keep original width for this column */
+	text-align: center; /* Center align for build status */
+}
+
+table td img {
+	vertical-align: middle;
+	max-width: 100%; /* Ensure images scale */
+	height: auto;
+}
+
+table td ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+table td li {
+	margin-bottom: 4px;
+}
+
+table td li:last-child {
+	margin-bottom: 0;
+}
+
+table td a {
+	color: #3498db;
+	text-decoration: none;
+}
+
+table td a:hover {
+	text-decoration: underline;
+}
+
+/* Footer Styles */
+footer.container {
+	padding: 30px 16px;
+	text-align: center;
+	font-size: 0.9em;
+	color: #777;
+	border-top: 1px solid #eee;
+	margin-top: 40px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+	.grid {
+		grid-template-columns: 1fr; /* Stack grid cells on small screens */
+	}
+
+	table, thead, tbody, th, td, tr {
+		display: block; /* Make table elements block-level */
+	}
+
+	table thead {
+		display: none; /* Hide table headers (will re-add visually as data-attributes if needed for accessibility, but out of scope for this request) */
+	}
+
+	table tr {
+		margin-bottom: 15px;
+		border: 1px solid #ccc;
+		border-radius: 8px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+		overflow: hidden;
+	}
+
+	table td {
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%; /* Space for pseudo-element label */
+		text-align: right;
+	}
+
+	table td::before {
+		content: attr(data-label); /* Use data-label for mobile headings */
+		position: absolute;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+		text-align: left;
+		font-weight: bold;
+		color: #34495e;
+	}
+
+	/* Specific labels for table cells on mobile */
+	table td:nth-of-type(1)::before { content: "Repository:"; }
+	table td:nth-of-type(2)::before { content: "Overview:"; }
+	table td:nth-of-type(3)::before { content: "Build Status:"; }
+
+	table td:last-child {
+		border-bottom: none;
+	}
 }
 </style>
 
