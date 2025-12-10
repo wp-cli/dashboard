@@ -19,7 +19,9 @@ github_data:
     search: is:open sort:updated-desc org:wp-cli is:pr team-review-requested:wp-cli/committers
 github_repositories:
   - wp-cli/automated-tests
+  - wp-cli/ability-command
   - wp-cli/admin-command
+  - wp-cli/block-command
   - wp-cli/cache-command
   - wp-cli/checksum-command
   - wp-cli/config-command
