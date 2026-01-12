@@ -175,6 +175,26 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 					mkdir( dirname( $path ), 0777, true );
 				}
 				file_put_contents( $path, implode( PHP_EOL, $dates ) );
+
+				$details_path = WP_CLI_DASHBOARD_BASE_DIR . '/github-data/contributor-details/' . $login . '.json';
+				if ( ! file_exists( $details_path ) || ! empty( $assoc_args['force'] ) ) {
+					$response = WP_CLI\Utils\http_request( 'GET', "https://api.github.com/users/{$login}", array(), $headers, array(
+						'timeout' => 30,
+					) );
+					if ( 20 !== (int) substr( $response->status_code, 0, 2 ) ) {
+						WP_CLI::warning( "Failed to fetch details for user {$login}" );
+						continue;
+					}
+					$user_data = json_decode( $response->body );
+					$details = [
+						'avatar_url' => $user_data->avatar_url,
+					];
+					if ( ! is_dir( dirname( $details_path ) ) ) {
+						mkdir( dirname( $details_path ), 0777, true );
+					}
+					file_put_contents( $details_path, json_encode( $details ) );
+					WP_CLI::log( "Saved details for {$login}" );
+				}
 			}
 
 		}
