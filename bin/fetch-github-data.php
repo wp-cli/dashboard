@@ -192,6 +192,7 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 				'open_pull_requests' => null,
 				'active_milestone'   => null,
 				'latest_release'     => null,
+				'pushed_at'          => null,
 			);
 
 			$response = WP_CLI\Utils\http_request( 'GET', sprintf( 'https://api.github.com/repos/%s', $repo ), array(), $headers, array(
@@ -208,6 +209,7 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 			}
 			$data = json_decode( $response->body );
 			$repository_data['open_issues'] = $data->open_issues;
+			$repository_data['pushed_at'] = $data->pushed_at;
 
 			$query = array(
 				'per_page' => 100,
