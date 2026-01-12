@@ -117,7 +117,7 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 					);
 					break;
 				}
-				preg_match( "/<(.*)>; rel=\"next\"/", $response->headers['link'], $matches );
+				preg_match( "/<(.*)>; rel=\"next\"/", $response->headers['link'] ?? '', $matches );
 				$issues_api = ! empty( $matches ) ? $matches[1] : '';
 				$issues = json_decode( $response->body );
 				foreach ( $issues as $issue ) {
@@ -156,7 +156,7 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 							$event_time                      = strtotime( $comment->created_at );
 							$actors[ $comment->user->login ][] = gmdate( 'Y-m-d', $event_time );
 						}
-						preg_match( "/<(.*)>; rel=\"next\"/", $response->headers['link'], $matches );
+						preg_match( "/<(.*)>; rel=\"next\"/", $response->headers['link'] ?? '', $matches );
 						$comments_api = ! empty( $matches ) ? $matches[1] : '';
 					} while ( $comments_api );
 				}
