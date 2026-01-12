@@ -162,7 +162,13 @@ function wp_cli_dashboard_fetch_github_data( $args, $assoc_args ) {
 				}
 			} while ( $issues_api );
 
+			$bot_users = ['Copilot', 'codecov[bot]', 'gemini-code-assist[bot]', 'github-actions[bot]'];
+
 			foreach ( $actors as $login => $dates ) {
+				if ( in_array( $login, $bot_users, true ) ) {
+					continue;
+				}
+
 				$path     = WP_CLI_DASHBOARD_BASE_DIR . '/github-data/contributors/' . $login;
 				$existing = array();
 				if ( file_exists( $path ) ) {
