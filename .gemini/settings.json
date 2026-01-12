@@ -1,0 +1,10 @@
+{
+  "context": {
+    "fileName": "AGENTS.md"
+  },
+  "advanced": {
+    "bugCommand": {
+      "urlTemplate": "https://github.com/wp-cli/dashboard/issues/new?template=1-BUG_REPORT.md&title={title}"
+    }
+  }
+}
