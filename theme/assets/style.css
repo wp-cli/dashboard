@@ -125,22 +125,11 @@ h2::after {
 	text-decoration: underline;
 }
 
-/* Chartist.js Chart Styling (adjust as needed based on chartist defaults) */
+/* Chart.js Chart Styling */
 .ct-chart {
 	position: relative;
 	height: 200px; /* Fixed height for charts */
 	margin-top: 10px;
-}
-
-.ct-series-a .ct-line {
-	stroke: #2ecc71; /* Accent color for lines */
-	stroke-width: 3px;
-}
-
-.ct-label {
-	font-size: 0.8em;
-	fill: rgba(0, 0, 0, 0.4);
-	color: rgba(0, 0, 0, 0.4);
 }
 
 /* Table Styles */
@@ -286,3 +275,74 @@ footer.container {
 		border-bottom: none;
 	}
 }
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: #1a1a1a;
+		color: #f1f1f1;
+	}
+
+	header.container {
+		background-color: #111;
+		border-bottom-color: #2ecc71;
+	}
+
+	h2 {
+		color: #f1f1f1;
+	}
+
+	.grid-cell {
+		background-color: #2a2a2a;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+	}
+
+	.grid-cell h3, .grid-cell h3 a {
+		color: #f1f1f1;
+	}
+
+	.grid-cell p {
+		color: #ccc;
+	}
+
+	table {
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+	}
+
+	table thead {
+		background-color: #333;
+		color: #f1f1f1;
+	}
+
+	table th, table td {
+		border-bottom-color: #444;
+	}
+
+	table tbody tr:nth-child(even) {
+		background-color: #2a2a2a;
+	}
+
+	table tbody tr:hover {
+		background-color: #333;
+	}
+
+	table td a, .grid-cell p a {
+		color: #4db8ff;
+	}
+
+	.chart-js-dark-mode .tick {
+		color: #f1f1f1;
+	}
+
+	canvas {
+		color: #f1f1f1;
+	}
+
+	/* Target Chart.js grid lines and ticks for dark mode */
+	.chartjs-render-monitor .chartjs-grid-lines,
+	.chartjs-render-monitor .chartjs-axis-tick,
+	.chartjs-render-monitor .chartjs-axis-label,
+	.chartjs-render-monitor .chartjs-legend-label-text {
+		color: #f1f1f1 !important; /* Important needed to override inline styles */
+	}
+}
+

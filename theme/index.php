@@ -16,8 +16,8 @@
 <link rel="icon" type="image/x-icon" href="https://wp-cli.org/assets/img/favicon.jpg" />
 <link rel="shortcut icon" href="https://wp-cli.org/assets/img/favicon.jpg" />
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-<script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 </head>
 
@@ -31,6 +31,7 @@
 	<main class="container">
 
 		<h2>Key Metrics</h2>
+		<p style="font-size: 0.9em; text-align: center; margin-top: -15px; margin-bottom: 30px; color: #777;">Showing data for the past 12 months.</p>
 
 		<div class="grid">
 			<?php
@@ -40,7 +41,7 @@
 				$sort_order = array(
 					'open_pull_requests_awaiting_review',
 					'open_pull_requests',
-					'open_issues_no_label',
+					'open_issues_no_reply',
 					'open_issues',
 					'open_issues_label_bug',
 				);
@@ -71,10 +72,17 @@
 			<div class="grid-cell">
 				<h3>New Contributors (Past 30 Days)</h3>
 				<?php
+				$bot_users = ['Copilot', 'codecov[bot]', 'gemini-code-assist[bot]', 'github-actions[bot]'];
+
 				$new_contributors  = [];
 				$new_contrib_users = [];
 				foreach ( glob( WP_CLI_DASHBOARD_BASE_DIR . '/github-data/contributors/*' ) as $file ) {
 					$contributor = basename( $file );
+
+					if ( in_array( $contributor, $bot_users, true ) ) {
+						continue;
+					}
+
 					$dates       = explode( PHP_EOL, file_get_contents( $file ) );
 					$is_new      = false;
 					foreach ( $dates as $date ) {
@@ -87,7 +95,13 @@
 					}
 					if ( $is_new ) {
 						$new_contrib_users[] = $contributor;
-						$new_contributors[]  = '<a href="' . sprintf( 'https://github.com/%s', $contributor ) . '" target="_blank">' . $contributor . '</a>';
+						$details_path = WP_CLI_DASHBOARD_BASE_DIR . '/github-data/contributor-details/' . $contributor . '.json';
+						$avatar_url = '';
+						if ( file_exists( $details_path ) ) {
+							$details = json_decode( file_get_contents( $details_path ), true );
+							$avatar_url = $details['avatar_url'];
+						}
+						$new_contributors[]  = '<a href="' . sprintf( 'https://github.com/%s', $contributor ) . '" target="_blank">' . ( $avatar_url ? '<img src="' . $avatar_url . '" width="30" height="30" style="border-radius: 50%; vertical-align: middle; margin-right: 5px;"> ' : '' ) . $contributor . '</a>';
 					}
 				}
 				?>
@@ -102,8 +116,8 @@
 					$new_contributors[ gmdate( 'Y-m', strtotime( '-' . $i . ' months' ) ) ] = [];
 				}
 				foreach ( glob( WP_CLI_DASHBOARD_BASE_DIR . '/github-data/contributors/*' ) as $file ) {
-					$contributor   = basename( $file );
-					$dates         = explode( PHP_EOL, file_get_contents( $file ) );
+					$contributor = basename( $file );
+					$dates       = explode( PHP_EOL, file_get_contents( $file ) );
 					foreach ( $dates as $date ) {
 						if ( strtotime( $date ) > strtotime( '12 months ago' ) ) {
 							$is_new = true;
@@ -127,15 +141,38 @@
 					$labels[] = $month;
 				}
 				?>
-				<div id="new-contributors"></div>
+				<canvas id="new-contributors"></canvas>
 				<script>
-				new Chartist.Line('#new-contributors', {
-					labels: <?php echo json_encode( $labels ); ?>,
-					series: <?php echo json_encode( array( array_values( $data ) ) ); ?>,
-				}, {
-					low: 0,
-					onlyIntegers: true,
-					showPoint: false,
+				new Chart(document.getElementById('new-contributors'), {
+					type: 'line',
+					data: {
+						labels: <?php echo json_encode( $labels ); ?>,
+						datasets: [{
+							data: <?php echo json_encode( $data ); ?>,
+							label: 'New Contributors',
+							borderColor: '#2ecc71',
+							fill: false
+						}]
+					},
+					options: {
+						plugins: {
+							tooltip: {
+								mode: 'index',
+								intersect: false
+							},
+							legend: {
+								display: false
+							}
+						},
+						scales: {
+							y: {
+								beginAtZero: true,
+								ticks: {
+									stepSize: 1
+								}
+							}
+						}
+					}
 				});
 				</script>
 			</div>
@@ -145,7 +182,7 @@
 				$active_contributors = [];
 				foreach ( glob( WP_CLI_DASHBOARD_BASE_DIR . '/github-data/contributors/*' ) as $file ) {
 					$contributor = basename( $file );
-					if ( in_array( $contributor, $new_contrib_users, true ) ) {
+					if ( in_array( $contributor, $new_contrib_users, true ) || in_array( $contributor, $bot_users, true ) ) {
 						continue;
 					}
 					$dates     = explode( PHP_EOL, file_get_contents( $file ) );
@@ -157,7 +194,13 @@
 						}
 					}
 					if ( $is_active ) {
-						$active_contributors[] = '<a href="' . sprintf( 'https://github.com/%s', $contributor ) . '" target="_blank">' . $contributor . '</a>';
+						$details_path = WP_CLI_DASHBOARD_BASE_DIR . '/github-data/contributor-details/' . $contributor . '.json';
+						$avatar_url = '';
+						if ( file_exists( $details_path ) ) {
+							$details = json_decode( file_get_contents( $details_path ), true );
+							$avatar_url = $details['avatar_url'];
+						}
+						$active_contributors[] = '<a href="' . sprintf( 'https://github.com/%s', $contributor ) . '" target="_blank">' . ( $avatar_url ? '<img src="' . $avatar_url . '" width="30" height="30" style="border-radius: 50%; vertical-align: middle; margin-right: 5px;"> ' : '' ) . $contributor . '</a>';
 					}
 				}
 				?>
@@ -166,13 +209,14 @@
 			<div class="grid-cell" style="grid-column: span 2">
 				<h3>Active Contributors (Past 12 Months)</h3>
 				<?php
+				$bot_users = ['wp-cli-bot', 'dependabot', 'dependabot-preview', 'github-actions', 'imgbot', 'greenkeeper', 'renovate', 'snyk-bot', 'codefactor-io', 'houndci', 'codacy-bot', 'coveralls', 'codeclimate', 'github-flow', 'release-drafter[bot]', 'buddy-works', 'php-tuf-bot', 'wp-testing-bot', 'wordpress-robot', 'wp-cli-test', 'wp-e2e-bot', 'google-wsp-gemini'];
 				$active_contributors = [];
 				for ( $i = 0; $i < 12; $i++ ) {
 					$active_contributors[ gmdate( 'Y-m', strtotime( '-' . $i . ' months' ) ) ] = [];
 				}
 				foreach ( glob( WP_CLI_DASHBOARD_BASE_DIR . '/github-data/contributors/*' ) as $file ) {
 					$contributor = basename( $file );
-					if ( in_array( $contributor, $all_new_contribs, true ) ) {
+					if ( in_array( $contributor, $all_new_contribs, true ) || in_array( $contributor, $bot_users, true ) ) {
 						continue;
 					}
 					$dates = explode( PHP_EOL, file_get_contents( $file ) );
@@ -193,18 +237,40 @@
 				error_log( var_export( $data, true ) );
 				error_log( var_export( $labels, true ) );
 				?>
-				<div id="active-contributors"></div>
-				<script>
-				new Chartist.Line('#active-contributors', {
-					labels: <?php echo json_encode( $labels ); ?>,
-					series: <?php echo json_encode( array( array_values( $data ) ) ); ?>,
-				}, {
-					low: 0,
-					onlyIntegers: true,
-					showPoint: false,
-				});
-				</script>
-			</div>
+				                <canvas id="active-contributors"></canvas>
+				                <script>
+				                new Chart(document.getElementById('active-contributors'), {
+				                    type: 'line',
+				                    data: {
+				                        labels: <?php echo json_encode( $labels ); ?>,
+				                        datasets: [{
+				                            data: <?php echo json_encode( $data ); ?>,
+				                            label: 'Active Contributors',
+				                            borderColor: '#2ecc71',
+				                            fill: false
+				                        }]
+				                    },
+				                    options: {
+				                        plugins: {
+				                            tooltip: {
+				                                mode: 'index',
+				                                intersect: false
+				                            },
+				                            legend: {
+				                                display: false
+				                            }
+				                        },
+				                        scales: {
+				                            y: {
+				                                beginAtZero: true,
+				                                ticks: {
+				                                    stepSize: 1
+				                                }
+				                            }
+				                        }
+				                    }
+				                });
+				                </script>			</div>
 		</div>
 
 		<h2>Repositories</h2>
@@ -215,6 +281,7 @@
 					<th class="repository">Repository</th>
 					<th>Overview</th>
 					<th class="build-status">Build Status</th>
+					<th>Last Commit</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -253,6 +320,16 @@
 						<?php if ( 'wp-cli/wp-cli-dev' !== $repo ) : ?>
 							<a href="<?php echo sprintf( 'https://github.com/%s/actions/workflows/testing.yml', $repo ); ?>" target="_blank"><img height="20px" src="<?php echo sprintf( 'https://github.com/%s/actions/workflows/testing.yml/badge.svg', $repo ); ?>" alt="Testing" style="max-width: 100%;"></a>
 						<?php endif; ?>
+					</td>
+					<td>
+						<?php
+						if ( ! empty( $repo_data['pushed_at'] ) ) {
+							$pushed_at = strtotime( $repo_data['pushed_at'] );
+							echo human_time_diff( $pushed_at, time() ) . ' ago';
+						} else {
+							echo 'N/A';
+						}
+						?>
 					</td>
 				</tr>
 			<?php endforeach; ?>
