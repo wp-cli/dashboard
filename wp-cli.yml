@@ -1,4 +1,5 @@
 require:
   - bin/fetch-github-data.php
+  - bin/fetch-activity-data.php
   - bin/build-dashboard.php
   - bin/recent-contributors.php

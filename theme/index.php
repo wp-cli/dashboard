@@ -25,7 +25,7 @@
 
 	<header class="container">
 		<h1>WP-CLI Contributor Dashboard</h1>
-		<p>Dashboard is rebuilt every 20 minutes. <a href="https://github.com/wp-cli/dashboard/issues" target="_blank">Create an issue</a> to suggest an improvement.</p>
+		<p>Dashboard is rebuilt every hour. <a href="https://github.com/wp-cli/dashboard/issues" target="_blank">Create an issue</a> to suggest an improvement.</p>
 	</header>
 
 	<main class="container">
@@ -64,6 +64,77 @@
 				</div>
 			<?php endforeach; ?>
 
+		</div>
+
+		<h2>Activity (Past 12 Months)</h2>
+
+		<div class="grid">
+			<div class="grid-cell">
+				<h3>Issues / Week</h3>
+				<?php
+				$new_issues    = [];
+				$closed_issues = [];
+				
+				$path_new = WP_CLI_DASHBOARD_BASE_DIR . '/github-data/activity/new-issues.json';
+				if ( file_exists( $path_new ) ) {
+					$new_issues = json_decode( file_get_contents( $path_new ), true );
+				}
+				
+				$path_closed = WP_CLI_DASHBOARD_BASE_DIR . '/github-data/activity/closed-issues.json';
+				if ( file_exists( $path_closed ) ) {
+					$closed_issues = json_decode( file_get_contents( $path_closed ), true );
+				}
+
+				echo wp_cli_dashboard_get_template_part( 'parts/activity-chart', array(
+					'datasets' => array(
+						array(
+							'label' => 'New',
+							'color' => '#3498db', // Blue
+							'data'  => $new_issues,
+						),
+						array(
+							'label' => 'Closed',
+							'color' => '#e74c3c', // Red
+							'data'  => $closed_issues,
+						),
+					),
+					'id'    => 'issues-activity-chart',
+				) );
+				?>
+			</div>
+			<div class="grid-cell">
+				<h3>Pull Requests / Week</h3>
+				<?php
+				$new_prs    = [];
+				$merged_prs = [];
+				
+				$path_new = WP_CLI_DASHBOARD_BASE_DIR . '/github-data/activity/new-prs.json';
+				if ( file_exists( $path_new ) ) {
+					$new_prs = json_decode( file_get_contents( $path_new ), true );
+				}
+
+				$path_merged = WP_CLI_DASHBOARD_BASE_DIR . '/github-data/activity/merged-prs.json';
+				if ( file_exists( $path_merged ) ) {
+					$merged_prs = json_decode( file_get_contents( $path_merged ), true );
+				}
+
+				echo wp_cli_dashboard_get_template_part( 'parts/activity-chart', array(
+					'datasets' => array(
+						array(
+							'label' => 'New',
+							'color' => '#3498db', // Blue
+							'data'  => $new_prs,
+						),
+						array(
+							'label' => 'Merged',
+							'color' => '#9b59b6', // Purple
+							'data'  => $merged_prs,
+						),
+					),
+					'id'    => 'prs-activity-chart',
+				) );
+				?>
+			</div>
 		</div>
 
 		<h2>Contributors</h2>
@@ -234,8 +305,6 @@
 					$data[] = count( array_unique( $contributors ) );
 					$labels[] = $month;
 				}
-				error_log( var_export( $data, true ) );
-				error_log( var_export( $labels, true ) );
 				?>
 				                <canvas id="active-contributors"></canvas>
 				                <script>

@@ -3,7 +3,7 @@ name: Fetch GitHub data and rebuild dashboard
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '*/20 * * * *' # Run every 20 minutes.
+    - cron:  '0 * * * *' # Runs every hour.
 
 # Cancels all previous workflow runs for the same branch that have not yet completed.
 concurrency:
@@ -52,6 +52,7 @@ jobs:
       - name: Fetch GitHub data
         run: |
           wp dashboard fetch-github-data
+          wp dashboard fetch-activity-data
         env:
           GITHUB_TOKEN: ${{ secrets.MAKE_COFFEE_TOKEN }}
 
