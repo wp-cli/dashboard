@@ -181,9 +181,10 @@ table th.repository {
 	width: 220px; /* Keep original width for this column */
 }
 
-table th.build-status {
+table th.build-status,
+table th.code-quality {
 	width: 120px; /* Keep original width for this column */
-	text-align: center; /* Center align for build status */
+	text-align: center; /* Center align for build status and code quality */
 }
 
 table td img {
@@ -270,6 +271,8 @@ footer.container {
 	table td:nth-of-type(1)::before { content: "Repository:"; }
 	table td:nth-of-type(2)::before { content: "Overview:"; }
 	table td:nth-of-type(3)::before { content: "Build Status:"; }
+	table td:nth-of-type(4)::before { content: "Code Quality:"; }
+	table td:nth-of-type(5)::before { content: "Last Commit:"; }
 
 	table td:last-child {
 		border-bottom: none;

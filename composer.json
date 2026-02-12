@@ -4,5 +4,9 @@
     "license": "MIT",
     "require": {
         "wp-cli/wp-cli": "^2.5"
+    },
+    "scripts": {
+        "build": "wp dashboard build",
+        "serve": "open http://localhost:8080 && php -S localhost:8080"
     }
 }

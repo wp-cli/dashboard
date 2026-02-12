@@ -350,6 +350,7 @@
 					<th class="repository">Repository</th>
 					<th>Overview</th>
 					<th class="build-status">Build Status</th>
+					<th class="code-quality">Code Quality</th>
 					<th>Last Commit</th>
 				</tr>
 			</thead>
@@ -388,6 +389,11 @@
 					<td>
 						<?php if ( 'wp-cli/wp-cli-dev' !== $repo ) : ?>
 							<a href="<?php echo sprintf( 'https://github.com/%s/actions/workflows/testing.yml', $repo ); ?>" target="_blank"><img height="20px" src="<?php echo sprintf( 'https://github.com/%s/actions/workflows/testing.yml/badge.svg', $repo ); ?>" alt="Testing" style="max-width: 100%;"></a>
+						<?php endif; ?>
+					</td>
+					<td>
+						<?php if ( 'wp-cli/automated-tests' !== $repo ) : ?>
+							<a href="<?php echo sprintf( 'https://github.com/%s/actions/workflows/code-quality.yml', $repo ); ?>" target="_blank"><img height="20px" src="<?php echo sprintf( 'https://github.com/%s/actions/workflows/code-quality.yml/badge.svg', $repo ); ?>" alt="Code Quality" style="max-width: 100%;"></a>
 						<?php endif; ?>
 					</td>
 					<td>

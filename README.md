@@ -6,5 +6,11 @@ wp-cli-dashboard
 To build the dashboard, run:
 
 ```bash
-wp dashboard build
+composer run-script build
+```
+
+To view the dashboard locally, you can start a PHP built-in web server:
+
+```bash
+composer run-script serve
 ```

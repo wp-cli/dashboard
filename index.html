@@ -187,9 +187,10 @@ table th.repository {
 	width: 220px; /* Keep original width for this column */
 }
 
-table th.build-status {
+table th.build-status,
+table th.code-quality {
 	width: 120px; /* Keep original width for this column */
-	text-align: center; /* Center align for build status */
+	text-align: center; /* Center align for build status and code quality */
 }
 
 table td img {
@@ -276,6 +277,8 @@ footer.container {
 	table td:nth-of-type(1)::before { content: "Repository:"; }
 	table td:nth-of-type(2)::before { content: "Overview:"; }
 	table td:nth-of-type(3)::before { content: "Build Status:"; }
+	table td:nth-of-type(4)::before { content: "Code Quality:"; }
+	table td:nth-of-type(5)::before { content: "Last Commit:"; }
 
 	table td:last-child {
 		border-bottom: none;
@@ -835,6 +838,7 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					<th class="repository">Repository</th>
 					<th>Overview</th>
 					<th class="build-status">Build Status</th>
+					<th class="code-quality">Code Quality</th>
 					<th>Last Commit</th>
 				</tr>
 			</thead>
@@ -858,6 +862,8 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/automated-tests/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/automated-tests/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
+											</td>
+					<td>
 						2 weeks ago					</td>
 				</tr>
 							<tr>
@@ -877,6 +883,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					</td>
 					<td>
 													<a href="https://github.com/wp-cli/ability-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/ability-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/ability-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/ability-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						3 weeks ago					</td>
@@ -900,6 +909,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/admin-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/admin-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
+													<a href="https://github.com/wp-cli/admin-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/admin-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
 						2 weeks ago					</td>
 				</tr>
 							<tr>
@@ -919,6 +931,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					</td>
 					<td>
 													<a href="https://github.com/wp-cli/block-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/block-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/block-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/block-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						3 weeks ago					</td>
@@ -942,6 +957,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/cache-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/cache-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
+													<a href="https://github.com/wp-cli/cache-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/cache-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
 						2 weeks ago					</td>
 				</tr>
 							<tr>
@@ -961,6 +979,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					</td>
 					<td>
 													<a href="https://github.com/wp-cli/checksum-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/checksum-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/checksum-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/checksum-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						1 week ago					</td>
@@ -984,6 +1005,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/config-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/config-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
+													<a href="https://github.com/wp-cli/config-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/config-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
 						7 days ago					</td>
 				</tr>
 							<tr>
@@ -1003,6 +1027,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					</td>
 					<td>
 													<a href="https://github.com/wp-cli/core-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/core-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/core-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/core-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						1 week ago					</td>
@@ -1026,6 +1053,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/cron-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/cron-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
+													<a href="https://github.com/wp-cli/cron-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/cron-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
 						1 week ago					</td>
 				</tr>
 							<tr>
@@ -1047,7 +1077,10 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/db-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/db-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
-						22 hours ago					</td>
+													<a href="https://github.com/wp-cli/db-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/db-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
+						23 hours ago					</td>
 				</tr>
 							<tr>
 					<td><a href="https://github.com/wp-cli/dist-archive-command" target="_blank">wp-cli/dist-archive-command</a></td>
@@ -1066,6 +1099,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					</td>
 					<td>
 													<a href="https://github.com/wp-cli/dist-archive-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/dist-archive-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/dist-archive-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/dist-archive-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						3 weeks ago					</td>
@@ -1089,6 +1125,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/doctor-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/doctor-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
+													<a href="https://github.com/wp-cli/doctor-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/doctor-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
 						7 days ago					</td>
 				</tr>
 							<tr>
@@ -1110,7 +1149,10 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/embed-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/embed-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
-						21 hours ago					</td>
+													<a href="https://github.com/wp-cli/embed-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/embed-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
+						22 hours ago					</td>
 				</tr>
 							<tr>
 					<td><a href="https://github.com/wp-cli/entity-command" target="_blank">wp-cli/entity-command</a></td>
@@ -1129,6 +1171,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					</td>
 					<td>
 													<a href="https://github.com/wp-cli/entity-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/entity-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/entity-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/entity-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						2 days ago					</td>
@@ -1152,6 +1197,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/eval-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/eval-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
+													<a href="https://github.com/wp-cli/eval-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/eval-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
 						7 days ago					</td>
 				</tr>
 							<tr>
@@ -1171,6 +1219,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					</td>
 					<td>
 													<a href="https://github.com/wp-cli/export-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/export-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/export-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/export-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						3 weeks ago					</td>
@@ -1194,7 +1245,10 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/extension-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/extension-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
-						2 hours ago					</td>
+													<a href="https://github.com/wp-cli/extension-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/extension-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
+						3 hours ago					</td>
 				</tr>
 							<tr>
 					<td><a href="https://github.com/wp-cli/find-command" target="_blank">wp-cli/find-command</a></td>
@@ -1213,6 +1267,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					</td>
 					<td>
 													<a href="https://github.com/wp-cli/find-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/find-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/find-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/find-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						3 weeks ago					</td>
@@ -1236,6 +1293,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/i18n-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/i18n-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
+													<a href="https://github.com/wp-cli/i18n-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/i18n-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
 						20 hours ago					</td>
 				</tr>
 							<tr>
@@ -1255,6 +1315,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					</td>
 					<td>
 													<a href="https://github.com/wp-cli/import-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/import-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/import-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/import-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						3 weeks ago					</td>
@@ -1278,7 +1341,10 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/language-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/language-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
-						57 mins ago					</td>
+													<a href="https://github.com/wp-cli/language-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/language-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
+						2 hours ago					</td>
 				</tr>
 							<tr>
 					<td><a href="https://github.com/wp-cli/maintenance-mode-command" target="_blank">wp-cli/maintenance-mode-command</a></td>
@@ -1297,6 +1363,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					</td>
 					<td>
 													<a href="https://github.com/wp-cli/maintenance-mode-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/maintenance-mode-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/maintenance-mode-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/maintenance-mode-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						3 weeks ago					</td>
@@ -1320,6 +1389,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/media-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/media-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
+													<a href="https://github.com/wp-cli/media-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/media-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
 						2 weeks ago					</td>
 				</tr>
 							<tr>
@@ -1339,6 +1411,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					</td>
 					<td>
 													<a href="https://github.com/wp-cli/package-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/package-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/package-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/package-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						1 week ago					</td>
@@ -1362,6 +1437,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/php-cli-tools/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/php-cli-tools/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
+													<a href="https://github.com/wp-cli/php-cli-tools/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/php-cli-tools/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
 						1 week ago					</td>
 				</tr>
 							<tr>
@@ -1381,6 +1459,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					</td>
 					<td>
 													<a href="https://github.com/wp-cli/profile-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/profile-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/profile-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/profile-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						3 days ago					</td>
@@ -1404,6 +1485,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/restful/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/restful/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
+													<a href="https://github.com/wp-cli/restful/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/restful/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
 						3 weeks ago					</td>
 				</tr>
 							<tr>
@@ -1423,6 +1507,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					</td>
 					<td>
 													<a href="https://github.com/wp-cli/rewrite-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/rewrite-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/rewrite-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/rewrite-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						3 weeks ago					</td>
@@ -1446,6 +1533,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/role-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/role-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
+													<a href="https://github.com/wp-cli/role-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/role-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
 						3 weeks ago					</td>
 				</tr>
 							<tr>
@@ -1467,7 +1557,10 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/scaffold-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/scaffold-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
-						1 hour ago					</td>
+													<a href="https://github.com/wp-cli/scaffold-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/scaffold-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
+						2 hours ago					</td>
 				</tr>
 							<tr>
 					<td><a href="https://github.com/wp-cli/scaffold-package-command" target="_blank">wp-cli/scaffold-package-command</a></td>
@@ -1486,6 +1579,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					</td>
 					<td>
 													<a href="https://github.com/wp-cli/scaffold-package-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/scaffold-package-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/scaffold-package-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/scaffold-package-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						1 week ago					</td>
@@ -1509,6 +1605,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/search-replace-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/search-replace-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
+													<a href="https://github.com/wp-cli/search-replace-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/search-replace-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
 						1 week ago					</td>
 				</tr>
 							<tr>
@@ -1528,6 +1627,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					</td>
 					<td>
 													<a href="https://github.com/wp-cli/server-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/server-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/server-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/server-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						7 days ago					</td>
@@ -1551,7 +1653,10 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/shell-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/shell-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
-						58 mins ago					</td>
+													<a href="https://github.com/wp-cli/shell-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/shell-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
+						2 hours ago					</td>
 				</tr>
 							<tr>
 					<td><a href="https://github.com/wp-cli/site-health-command" target="_blank">wp-cli/site-health-command</a></td>
@@ -1570,6 +1675,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					</td>
 					<td>
 													<a href="https://github.com/wp-cli/site-health-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/site-health-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/site-health-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/site-health-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						2 weeks ago					</td>
@@ -1593,6 +1701,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/super-admin-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/super-admin-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
+													<a href="https://github.com/wp-cli/super-admin-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/super-admin-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
 						3 weeks ago					</td>
 				</tr>
 							<tr>
@@ -1614,7 +1725,10 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/widget-command/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/widget-command/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
-						21 hours ago					</td>
+													<a href="https://github.com/wp-cli/widget-command/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/widget-command/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
+						22 hours ago					</td>
 				</tr>
 							<tr>
 					<td><a href="https://github.com/wp-cli/wp-cli" target="_blank">wp-cli/wp-cli</a></td>
@@ -1633,6 +1747,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					</td>
 					<td>
 													<a href="https://github.com/wp-cli/wp-cli/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/wp-cli/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/wp-cli/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/wp-cli/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						3 days ago					</td>
@@ -1656,6 +1773,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/wp-cli-bundle/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/wp-cli-bundle/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
+													<a href="https://github.com/wp-cli/wp-cli-bundle/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/wp-cli-bundle/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
 						2 days ago					</td>
 				</tr>
 							<tr>
@@ -1674,6 +1794,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 						</ul>
 					</td>
 					<td>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/wp-cli-dev/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/wp-cli-dev/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						2 weeks ago					</td>
@@ -1697,6 +1820,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/wp-cli-tests/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/wp-cli-tests/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
+													<a href="https://github.com/wp-cli/wp-cli-tests/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/wp-cli-tests/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
 						4 days ago					</td>
 				</tr>
 							<tr>
@@ -1716,6 +1842,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					</td>
 					<td>
 													<a href="https://github.com/wp-cli/wp-cli.github.com/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/wp-cli.github.com/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/wp-cli.github.com/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/wp-cli.github.com/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						2 weeks ago					</td>
@@ -1739,6 +1868,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 													<a href="https://github.com/wp-cli/wp-config-transformer/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/wp-config-transformer/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
 											</td>
 					<td>
+													<a href="https://github.com/wp-cli/wp-config-transformer/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/wp-config-transformer/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
+											</td>
+					<td>
 						3 weeks ago					</td>
 				</tr>
 							<tr>
@@ -1758,6 +1890,9 @@ new Chart(document.getElementById('prs-activity-chart'), {
 					</td>
 					<td>
 													<a href="https://github.com/wp-cli/wp-super-cache-cli/actions/workflows/testing.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/wp-super-cache-cli/actions/workflows/testing.yml/badge.svg" alt="Testing" style="max-width: 100%;"></a>
+											</td>
+					<td>
+													<a href="https://github.com/wp-cli/wp-super-cache-cli/actions/workflows/code-quality.yml" target="_blank"><img height="20px" src="https://github.com/wp-cli/wp-super-cache-cli/actions/workflows/code-quality.yml/badge.svg" alt="Code Quality" style="max-width: 100%;"></a>
 											</td>
 					<td>
 						3 weeks ago					</td>
