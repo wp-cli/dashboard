@@ -101,6 +101,10 @@
 					'id'    => 'issues-activity-chart',
 				) );
 				?>
+				<p style="text-align:center; font-size: 0.9em; margin-top: 10px;">
+					<strong>Total New:</strong> <?php echo count( $new_issues ); ?> &nbsp;|&nbsp; 
+					<strong>Total Closed:</strong> <?php echo count( $closed_issues ); ?>
+				</p>
 			</div>
 			<div class="grid-cell">
 				<h3>Pull Requests / Week</h3>
@@ -134,6 +138,10 @@
 					'id'    => 'prs-activity-chart',
 				) );
 				?>
+				<p style="text-align:center; font-size: 0.9em; margin-top: 10px;">
+					<strong>Total New:</strong> <?php echo count( $new_prs ); ?> &nbsp;|&nbsp; 
+					<strong>Total Merged:</strong> <?php echo count( $merged_prs ); ?>
+				</p>
 			</div>
 		</div>
 
