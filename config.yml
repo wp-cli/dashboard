@@ -21,6 +21,7 @@ github_repositories:
   - wp-cli/automated-tests
   - wp-cli/ability-command
   - wp-cli/admin-command
+  - wp-cli/ai-command
   - wp-cli/block-command
   - wp-cli/cache-command
   - wp-cli/checksum-command
