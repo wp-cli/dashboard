@@ -56,7 +56,8 @@
 				}
 
 				foreach ( $sorted_data as $key => $metric ) :
-					$link = 'https://github.com/issues?q=' . rawurlencode( $metric['search'] );
+					$base_url = strpos( $key, 'pull_request' ) !== false ? 'https://github.com/pulls?q=' : 'https://github.com/issues?q=';
+					$link     = $base_url . rawurlencode( $metric['search'] );
 				?>
 				<div class="grid-cell">
 					<h3><a href="<?php echo $link; ?>" target="_blank"><?php echo $metric['label']; ?></a></h3>
