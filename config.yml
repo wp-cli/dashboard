@@ -1,22 +1,59 @@
 github_data:
   open_issues:
     label: Open Issues
+    better: lower
     search: is:open org:wp-cli is:issue sort:updated-desc
   open_issues_no_reply:
     label: Open Issues Without Reply
+    better: lower
     search: is:open org:wp-cli is:issue sort:updated-desc comments:0
   open_issues_label_bug:
     label: Open Bugs
+    better: lower
     search: is:open org:wp-cli is:issue sort:created-desc label:bug
   open_issues_good_first_issue:
     label: Good First Issues
+    better: neutral
     search: is:open org:wp-cli is:issue sort:created-desc label:good-first-issue
   open_pull_requests:
     label: Open Pull Requests
+    better: lower
     search: is:open sort:updated-desc org:wp-cli is:pr
   open_pull_requests_awaiting_review:
     label: Open Pull Requests Awaiting Review
+    better: lower
     search: is:open sort:updated-desc org:wp-cli is:pr team-review-requested:wp-cli/committers
+# Accounts treated as automation. Accounts of type "Bot" and logins ending
+# in "[bot]" are always excluded; list other automated accounts here.
+bot_users:
+  - Copilot
+  - wp-cli-bot
+  - wp-make-coffee
+  - dependabot
+  - dependabot-preview
+  - github-actions
+  - coderabbitai
+  - codecov
+  - gemini-code-assist
+  - github-advanced-security
+  - imgbot
+  - greenkeeper
+  - renovate
+  - snyk-bot
+  - codefactor-io
+  - houndci
+  - codacy-bot
+  - coveralls
+  - codeclimate
+  - github-flow
+  - release-drafter
+  - buddy-works
+  - php-tuf-bot
+  - wp-testing-bot
+  - wordpress-robot
+  - wp-cli-test
+  - wp-e2e-bot
+  - google-wsp-gemini
 github_repositories:
   - wp-cli/automated-tests
   - wp-cli/ability-command
