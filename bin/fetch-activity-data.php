@@ -37,25 +37,37 @@ function wp_cli_dashboard_fetch_activity_data( $args, $assoc_args ) {
 		|| empty( $items )
 		|| strtotime( $meta['last_fetch'] ) < strtotime( '-30 days', $now );
 
+	// GitHub's issue search returns nothing unless the query names a type,
+	// so issues and pull requests are searched separately.
+	$bases = array( 'org:wp-cli is:issue', 'org:wp-cli is:pr' );
 	$nodes = array();
 	$ok    = true;
 	if ( $full ) {
 		WP_CLI::log( 'Backfilling 12 months of activity...' );
-		// Month-sized slices keep each search below GitHub's 1,000 result cap;
-		// larger slices are split further automatically.
-		for ( $from = $window_start; $from < $now; $from = $to ) {
-			$to  = min( strtotime( '+1 month', $from ), $now + HOUR_IN_SECONDS );
-			$ok  = wp_cli_dashboard_search_range( 'org:wp-cli', 'updated', $from, $to, $nodes ) && $ok;
+		foreach ( $bases as $base ) {
+			// Month-sized slices keep each search below GitHub's 1,000 result
+			// cap; larger slices are split further automatically.
+			for ( $from = $window_start; $from < $now; $from = $to ) {
+				$to = min( strtotime( '+1 month', $from ), $now + HOUR_IN_SECONDS );
+				$ok = wp_cli_dashboard_search_range( $base, 'updated', $from, $to, $nodes ) && $ok;
+			}
+			// Items still open but untouched for over a year (needed for stale PRs).
+			$ok = wp_cli_dashboard_search_all( sprintf( '%s is:open updated:<%s', $base, gmdate( 'Y-m-d\TH:i:s\Z', $window_start ) ), $nodes ) && $ok;
 		}
-		// Items still open but untouched for over a year (needed for stale PRs).
-		$ok = wp_cli_dashboard_search_all( sprintf( 'org:wp-cli is:open updated:<%s', gmdate( 'Y-m-d\TH:i:s\Z', $window_start ) ), $nodes ) && $ok;
+		if ( empty( $nodes ) ) {
+			// A year of wp-cli activity is never empty; the query is broken.
+			WP_CLI::warning( 'Backfill returned no issues or pull requests; keeping previous data.' );
+			$ok = false;
+		}
 		if ( $ok ) {
 			$items = array(); // Start clean so deleted/transferred items drop out.
 		}
 	} else {
 		$since = strtotime( $meta['last_fetch'] ) - HOUR_IN_SECONDS;
 		WP_CLI::log( sprintf( 'Fetching activity updated since %s...', gmdate( 'Y-m-d H:i', $since ) ) );
-		$ok = wp_cli_dashboard_search_range( 'org:wp-cli', 'updated', $since, $now + HOUR_IN_SECONDS, $nodes );
+		foreach ( $bases as $base ) {
+			$ok = wp_cli_dashboard_search_range( $base, 'updated', $since, $now + HOUR_IN_SECONDS, $nodes ) && $ok;
+		}
 	}
 
 	$count = 0;
