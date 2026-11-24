@@ -2,7 +2,7 @@
 "schema":2,
 "default_branch":"main",
 "archived":false,
-"pushed_at":"2026-11-23T15:44:53Z",
+"pushed_at":"2026-11-24T10:51:34Z",
 "open_issues":0,
 "open_pull_requests":1,
 "milestone":{"title":"3.1.0","url":"https://github.com/wp-cli/package-command/milestone/53","due_on":null,"open":1,"closed":1},
