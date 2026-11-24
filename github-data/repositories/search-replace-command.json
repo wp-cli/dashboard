@@ -3,7 +3,7 @@
 "default_branch":"main",
 "archived":false,
 "pushed_at":"2026-11-24T15:31:17Z",
-"open_issues":9,
+"open_issues":8,
 "open_pull_requests":2,
 "milestone":{"title":"3.1.0","url":"https://github.com/wp-cli/search-replace-command/milestone/52","due_on":null,"open":0,"closed":2},
 "release":{"tag":"v3.0.3","url":"https://github.com/wp-cli/search-replace-command/releases/tag/v3.0.3","published_at":"2026-11-02T15:31:08Z"},
