@@ -4,7 +4,7 @@
 "archived":false,
 "pushed_at":"2026-11-24T10:54:19Z",
 "open_issues":7,
-"open_pull_requests":6,
+"open_pull_requests":5,
 "milestone":{"title":"3.0.4","url":"https://github.com/wp-cli/db-command/milestone/55","due_on":null,"open":0,"closed":2},
 "release":{"tag":"v3.0.3","url":"https://github.com/wp-cli/db-command/releases/tag/v3.0.3","published_at":"2026-11-02T15:30:04Z"},
 "unreleased":{"total":5,"human":5,"url":"https://github.com/wp-cli/db-command/compare/v3.0.3...main"},
