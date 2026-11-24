@@ -2,7 +2,7 @@
 "schema":2,
 "default_branch":"main",
 "archived":false,
-"pushed_at":"2026-11-24T10:37:19Z",
+"pushed_at":"2026-11-24T15:18:04Z",
 "open_issues":0,
 "open_pull_requests":1,
 "milestone":{"title":"2.1.0","url":"https://github.com/wp-cli/automated-tests/milestone/5","due_on":null,"open":1,"closed":0},
