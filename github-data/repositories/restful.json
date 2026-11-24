@@ -8,5 +8,5 @@
 "milestone":{"title":"0.4.3","url":"https://github.com/wp-cli/restful/milestone/7","due_on":null,"open":0,"closed":5},
 "release":{"tag":"v0.4.2","url":"https://github.com/wp-cli/restful/releases/tag/v0.4.2","published_at":"2026-04-13T13:30:44Z"},
 "unreleased":{"total":42,"human":38,"url":"https://github.com/wp-cli/restful/compare/v0.4.2...main"},
-"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/restful/actions/runs/45208695340","at":"2026-11-23T15:53:04Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/restful/actions/runs/45208694333","at":"2026-11-23T15:45:44Z"}}
+"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/restful/actions/runs/45304550306","at":"2026-11-24T01:27:19Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/restful/actions/runs/45208694333","at":"2026-11-23T15:45:44Z"}}
 }

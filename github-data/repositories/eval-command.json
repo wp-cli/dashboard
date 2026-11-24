@@ -8,5 +8,5 @@
 "milestone":null,
 "release":{"tag":"v3.0.1","url":"https://github.com/wp-cli/eval-command/releases/tag/v3.0.1","published_at":"2026-10-07T08:32:25Z"},
 "unreleased":{"total":13,"human":11,"url":"https://github.com/wp-cli/eval-command/compare/v3.0.1...main"},
-"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/eval-command/actions/runs/45208605727","at":"2026-11-23T15:51:43Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/eval-command/actions/runs/45208605088","at":"2026-11-23T15:45:58Z"}}
+"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/eval-command/actions/runs/45304338596","at":"2026-11-24T01:26:01Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/eval-command/actions/runs/45208605088","at":"2026-11-23T15:45:58Z"}}
 }

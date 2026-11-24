@@ -8,5 +8,5 @@
 "milestone":{"title":"5.5.5","url":"https://github.com/wp-cli/wp-cli-tests/milestone/145","due_on":null,"open":0,"closed":0},
 "release":{"tag":"v5.5.4","url":"https://github.com/wp-cli/wp-cli-tests/releases/tag/v5.5.4","published_at":"2026-11-19T11:20:11Z"},
 "unreleased":{"total":2,"human":2,"url":"https://github.com/wp-cli/wp-cli-tests/compare/v5.5.4...main"},
-"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/wp-cli-tests/actions/runs/45208799489","at":"2026-11-23T15:53:01Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/wp-cli-tests/actions/runs/45208798936","at":"2026-11-23T15:46:12Z"}}
+"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/wp-cli-tests/actions/runs/45304235846","at":"2026-11-24T01:25:05Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/wp-cli-tests/actions/runs/45208798936","at":"2026-11-23T15:46:12Z"}}
 }
