@@ -8,5 +8,5 @@
 "milestone":null,
 "release":{"tag":"v3.0.1","url":"https://github.com/wp-cli/checksum-command/releases/tag/v3.0.1","published_at":"2026-10-07T08:29:55Z"},
 "unreleased":{"total":10,"human":10,"url":"https://github.com/wp-cli/checksum-command/compare/v3.0.1...main"},
-"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/checksum-command/actions/runs/45304306399","at":"2026-11-24T01:24:55Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/checksum-command/actions/runs/45208539156","at":"2026-11-23T15:45:18Z"}}
+"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/checksum-command/actions/runs/45304306399","at":"2026-11-24T01:24:55Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/checksum-command/actions/runs/45312469893","at":"2026-11-24T02:35:53Z"}}
 }
