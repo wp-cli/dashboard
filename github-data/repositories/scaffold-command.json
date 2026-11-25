@@ -8,5 +8,5 @@
 "milestone":{"title":"3.0.4","url":"https://github.com/wp-cli/scaffold-command/milestone/56","due_on":null,"open":0,"closed":1},
 "release":{"tag":"v3.0.3","url":"https://github.com/wp-cli/scaffold-command/releases/tag/v3.0.3","published_at":"2026-11-02T15:30:59Z"},
 "unreleased":{"total":4,"human":4,"url":"https://github.com/wp-cli/scaffold-command/compare/v3.0.3...main"},
-"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/scaffold-command/actions/runs/45418752975","at":"2026-11-24T14:56:40Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/scaffold-command/actions/runs/45418752169","at":"2026-11-24T14:51:54Z"}}
+"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/scaffold-command/actions/runs/45525234953","at":"2026-11-25T01:29:01Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/scaffold-command/actions/runs/45418752169","at":"2026-11-24T14:51:54Z"}}
 }
