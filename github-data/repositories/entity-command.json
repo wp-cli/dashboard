@@ -2,11 +2,11 @@
 "schema":2,
 "default_branch":"main",
 "archived":false,
-"pushed_at":"2026-11-25T11:01:00Z",
+"pushed_at":"2026-11-25T11:56:04Z",
 "open_issues":4,
-"open_pull_requests":4,
-"milestone":{"title":"3.0.6","url":"https://github.com/wp-cli/entity-command/milestone/70","due_on":null,"open":1,"closed":7},
+"open_pull_requests":3,
+"milestone":{"title":"3.0.6","url":"https://github.com/wp-cli/entity-command/milestone/70","due_on":null,"open":0,"closed":8},
 "release":{"tag":"v3.0.5","url":"https://github.com/wp-cli/entity-command/releases/tag/v3.0.5","published_at":"2026-11-02T15:30:13Z"},
-"unreleased":{"total":10,"human":9,"url":"https://github.com/wp-cli/entity-command/compare/v3.0.5...main"},
-"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/entity-command/actions/runs/45524785640","at":"2026-11-25T02:16:59Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/entity-command/actions/runs/45533030540","at":"2026-11-25T02:27:42Z"}}
+"unreleased":{"total":11,"human":10,"url":"https://github.com/wp-cli/entity-command/compare/v3.0.5...main"},
+"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/entity-command/actions/runs/45606453703","at":"2026-11-25T11:51:18Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/entity-command/actions/runs/45606453434","at":"2026-11-25T11:40:00Z"}}
 }
