@@ -3,7 +3,7 @@
 "default_branch":"main",
 "archived":false,
 "pushed_at":"2026-11-24T17:36:28Z",
-"open_issues":15,
+"open_issues":16,
 "open_pull_requests":2,
 "milestone":{"title":"5.5.5","url":"https://github.com/wp-cli/wp-cli-tests/milestone/145","due_on":null,"open":0,"closed":2},
 "release":{"tag":"v5.5.4","url":"https://github.com/wp-cli/wp-cli-tests/releases/tag/v5.5.4","published_at":"2026-11-19T11:20:11Z"},
