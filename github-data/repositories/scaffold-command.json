@@ -2,11 +2,11 @@
 "schema":2,
 "default_branch":"main",
 "archived":false,
-"pushed_at":"2026-11-24T14:51:21Z",
+"pushed_at":"2026-11-26T17:37:26Z",
 "open_issues":0,
 "open_pull_requests":0,
-"milestone":{"title":"3.0.4","url":"https://github.com/wp-cli/scaffold-command/milestone/56","due_on":null,"open":0,"closed":1},
-"release":{"tag":"v3.0.3","url":"https://github.com/wp-cli/scaffold-command/releases/tag/v3.0.3","published_at":"2026-11-02T15:30:59Z"},
-"unreleased":{"total":4,"human":4,"url":"https://github.com/wp-cli/scaffold-command/compare/v3.0.3...main"},
+"milestone":null,
+"release":{"tag":"v3.0.4","url":"https://github.com/wp-cli/scaffold-command/releases/tag/v3.0.4","published_at":"2026-11-26T17:37:26Z"},
+"unreleased":{"total":0,"human":0,"url":"https://github.com/wp-cli/scaffold-command/compare/v3.0.4...main"},
 "ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/scaffold-command/actions/runs/45735279437","at":"2026-11-26T01:30:01Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/scaffold-command/actions/runs/45742277242","at":"2026-11-26T02:31:14Z"}}
 }
