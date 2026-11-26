@@ -8,5 +8,5 @@
 "milestone":null,
 "release":{"tag":"v1.0.4","url":"https://github.com/wp-cli/ability-command/releases/tag/v1.0.4","published_at":"2026-10-30T17:01:39Z"},
 "unreleased":{"total":5,"human":5,"url":"https://github.com/wp-cli/ability-command/compare/v1.0.4...main"},
-"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/ability-command/actions/runs/45524796580","at":"2026-11-25T01:22:26Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/ability-command/actions/runs/45532634368","at":"2026-11-25T02:37:35Z"}}
+"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/ability-command/actions/runs/45734845699","at":"2026-11-26T01:22:00Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/ability-command/actions/runs/45532634368","at":"2026-11-25T02:37:35Z"}}
 }
