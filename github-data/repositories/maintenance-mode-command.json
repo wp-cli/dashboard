@@ -8,5 +8,5 @@
 "milestone":null,
 "release":{"tag":"v3.0.1","url":"https://github.com/wp-cli/maintenance-mode-command/releases/tag/v3.0.1","published_at":"2026-10-30T17:03:42Z"},
 "unreleased":{"total":4,"human":4,"url":"https://github.com/wp-cli/maintenance-mode-command/compare/v3.0.1...main"},
-"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/maintenance-mode-command/actions/runs/45735211346","at":"2026-11-26T01:26:47Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/maintenance-mode-command/actions/runs/45532805096","at":"2026-11-25T02:40:12Z"}}
+"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/maintenance-mode-command/actions/runs/45735211346","at":"2026-11-26T01:26:47Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/maintenance-mode-command/actions/runs/45742189161","at":"2026-11-26T02:33:06Z"}}
 }

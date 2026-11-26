@@ -8,5 +8,5 @@
 "milestone":{"title":"3.0.3","url":"https://github.com/wp-cli/i18n-command/milestone/44","due_on":null,"open":1,"closed":2},
 "release":{"tag":"v3.0.2","url":"https://github.com/wp-cli/i18n-command/releases/tag/v3.0.2","published_at":"2026-10-30T17:03:27Z"},
 "unreleased":{"total":6,"human":6,"url":"https://github.com/wp-cli/i18n-command/compare/v3.0.2...main"},
-"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/i18n-command/actions/runs/45734829131","at":"2026-11-26T01:24:37Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/i18n-command/actions/runs/45532866733","at":"2026-11-25T02:37:22Z"}}
+"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/i18n-command/actions/runs/45734829131","at":"2026-11-26T01:24:37Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/i18n-command/actions/runs/45742239506","at":"2026-11-26T02:40:59Z"}}
 }
