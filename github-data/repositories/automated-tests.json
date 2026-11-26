@@ -8,5 +8,5 @@
 "milestone":{"title":"2.1.0","url":"https://github.com/wp-cli/automated-tests/milestone/5","due_on":null,"open":0,"closed":1},
 "release":{"tag":"v2.0.2","url":"https://github.com/wp-cli/automated-tests/releases/tag/v2.0.2","published_at":"2024-07-22T10:52:52Z"},
 "unreleased":{"total":57,"human":35,"url":"https://github.com/wp-cli/automated-tests/compare/v2.0.2...main"},
-"ci":{"testing":{"conclusion":"failure","url":"https://github.com/wp-cli/automated-tests/actions/runs/45862056899","at":"2026-11-26T16:57:16Z"},"code_quality":null}
+"ci":{"testing":{"conclusion":"failure","url":"https://github.com/wp-cli/automated-tests/actions/runs/45874783107","at":"2026-11-26T18:29:32Z"},"code_quality":null}
 }
