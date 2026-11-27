@@ -2,7 +2,7 @@
 "schema":2,
 "default_branch":"main",
 "archived":false,
-"pushed_at":"2026-11-26T18:36:12Z",
+"pushed_at":"2026-11-27T04:20:28Z",
 "open_issues":2,
 "open_pull_requests":3,
 "milestone":{"title":"3.0.0","url":"https://github.com/wp-cli/wp-cli-bundle/milestone/18","due_on":null,"open":0,"closed":432},
