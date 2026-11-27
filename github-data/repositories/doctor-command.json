@@ -8,5 +8,5 @@
 "milestone":{"title":"3.0.1","url":"https://github.com/wp-cli/doctor-command/milestone/12","due_on":null,"open":0,"closed":4},
 "release":{"tag":"v3.0.0","url":"https://github.com/wp-cli/doctor-command/releases/tag/v3.0.0","published_at":"2026-08-04T12:54:51Z"},
 "unreleased":{"total":22,"human":20,"url":"https://github.com/wp-cli/doctor-command/compare/v3.0.0...main"},
-"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/doctor-command/actions/runs/45735221202","at":"2026-11-26T01:27:24Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/doctor-command/actions/runs/45466037828","at":"2026-11-24T19:03:26Z"}}
+"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/doctor-command/actions/runs/45922144843","at":"2026-11-27T01:28:29Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/doctor-command/actions/runs/45466037828","at":"2026-11-24T19:03:26Z"}}
 }
