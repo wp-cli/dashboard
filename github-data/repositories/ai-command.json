@@ -8,5 +8,5 @@
 "milestone":null,
 "release":{"tag":"v1.1.0","url":"https://github.com/wp-cli/ai-command/releases/tag/v1.1.0","published_at":"2026-10-30T17:02:13Z"},
 "unreleased":{"total":5,"human":4,"url":"https://github.com/wp-cli/ai-command/compare/v1.1.0...main"},
-"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/ai-command/actions/runs/45922143498","at":"2026-11-27T01:27:28Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/ai-command/actions/runs/45742228045","at":"2026-11-26T02:43:27Z"}}
+"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/ai-command/actions/runs/45922143498","at":"2026-11-27T01:27:28Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/ai-command/actions/runs/45928200851","at":"2026-11-27T02:26:04Z"}}
 }

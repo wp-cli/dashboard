@@ -8,5 +8,5 @@
 "milestone":{"title":"2.1.0","url":"https://github.com/wp-cli/wp-super-cache-cli/milestone/4","due_on":null,"open":0,"closed":1},
 "release":{"tag":"v2.0.2","url":"https://github.com/wp-cli/wp-super-cache-cli/releases/tag/v2.0.2","published_at":"2026-10-07T08:35:38Z"},
 "unreleased":{"total":11,"human":11,"url":"https://github.com/wp-cli/wp-super-cache-cli/compare/v2.0.2...main"},
-"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/wp-super-cache-cli/actions/runs/45921813914","at":"2026-11-27T01:22:14Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/wp-super-cache-cli/actions/runs/45742132217","at":"2026-11-26T02:32:21Z"}}
+"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/wp-super-cache-cli/actions/runs/45921813914","at":"2026-11-27T01:22:14Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/wp-super-cache-cli/actions/runs/45928130450","at":"2026-11-27T02:44:15Z"}}
 }
