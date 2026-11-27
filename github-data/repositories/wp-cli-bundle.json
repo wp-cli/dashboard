@@ -4,7 +4,7 @@
 "archived":false,
 "pushed_at":"2026-11-27T09:55:52Z",
 "open_issues":2,
-"open_pull_requests":2,
+"open_pull_requests":3,
 "milestone":{"title":"3.0.0","url":"https://github.com/wp-cli/wp-cli-bundle/milestone/18","due_on":null,"open":0,"closed":433},
 "release":{"tag":"v2.12.0","url":"https://github.com/wp-cli/wp-cli-bundle/releases/tag/v2.12.0","published_at":"2025-05-07T02:25:38Z"},
 "unreleased":{"total":716,"human":107,"url":"https://github.com/wp-cli/wp-cli-bundle/compare/v2.12.0...main"},
