@@ -8,5 +8,5 @@
 "milestone":null,
 "release":{"tag":"v3.1.0","url":"https://github.com/wp-cli/db-command/releases/tag/v3.1.0","published_at":"2026-11-26T17:36:41Z"},
 "unreleased":{"total":0,"human":0,"url":"https://github.com/wp-cli/db-command/compare/v3.1.0...main"},
-"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/db-command/actions/runs/46092588985","at":"2026-11-28T01:28:18Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/db-command/actions/runs/45928258703","at":"2026-11-27T02:45:07Z"}}
+"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/db-command/actions/runs/46092588985","at":"2026-11-28T01:28:18Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/db-command/actions/runs/46097931815","at":"2026-11-28T02:35:37Z"}}
 }

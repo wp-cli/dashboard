@@ -8,5 +8,5 @@
 "milestone":null,
 "release":{"tag":"v1.0.2","url":"https://github.com/wp-cli/site-health-command/releases/tag/v1.0.2","published_at":"2026-10-30T17:04:42Z"},
 "unreleased":{"total":4,"human":4,"url":"https://github.com/wp-cli/site-health-command/compare/v1.0.2...main"},
-"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/site-health-command/actions/runs/46092652118","at":"2026-11-28T01:24:44Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/site-health-command/actions/runs/45928224822","at":"2026-11-27T02:26:48Z"}}
+"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/site-health-command/actions/runs/46092652118","at":"2026-11-28T01:24:44Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/site-health-command/actions/runs/46097884051","at":"2026-11-28T02:29:05Z"}}
 }

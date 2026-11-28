@@ -8,5 +8,5 @@
 "milestone":null,
 "release":{"tag":"v3.0.1","url":"https://github.com/wp-cli/super-admin-command/releases/tag/v3.0.1","published_at":"2026-10-30T17:04:49Z"},
 "unreleased":{"total":4,"human":4,"url":"https://github.com/wp-cli/super-admin-command/compare/v3.0.1...main"},
-"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/super-admin-command/actions/runs/46092482706","at":"2026-11-28T01:22:46Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/super-admin-command/actions/runs/45928334586","at":"2026-11-27T02:44:22Z"}}
+"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/super-admin-command/actions/runs/46092482706","at":"2026-11-28T01:22:46Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/super-admin-command/actions/runs/46097959084","at":"2026-11-28T02:35:38Z"}}
 }
