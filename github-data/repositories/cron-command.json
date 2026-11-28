@@ -8,5 +8,5 @@
 "milestone":null,
 "release":{"tag":"v3.0.2","url":"https://github.com/wp-cli/cron-command/releases/tag/v3.0.2","published_at":"2026-11-02T15:29:56Z"},
 "unreleased":{"total":3,"human":3,"url":"https://github.com/wp-cli/cron-command/compare/v3.0.2...main"},
-"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/cron-command/actions/runs/45921938081","at":"2026-11-27T01:24:29Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/cron-command/actions/runs/45927974873","at":"2026-11-27T02:30:32Z"}}
+"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/cron-command/actions/runs/46092510742","at":"2026-11-28T01:24:01Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/cron-command/actions/runs/45927974873","at":"2026-11-27T02:30:32Z"}}
 }

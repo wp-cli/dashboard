@@ -8,5 +8,5 @@
 "milestone":null,
 "release":{"tag":"v3.0.1","url":"https://github.com/wp-cli/rewrite-command/releases/tag/v3.0.1","published_at":"2026-10-30T17:04:03Z"},
 "unreleased":{"total":4,"human":4,"url":"https://github.com/wp-cli/rewrite-command/compare/v3.0.1...main"},
-"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/rewrite-command/actions/runs/45922161098","at":"2026-11-27T01:28:12Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/rewrite-command/actions/runs/45928207397","at":"2026-11-27T02:43:04Z"}}
+"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/rewrite-command/actions/runs/46092691227","at":"2026-11-28T01:27:02Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/rewrite-command/actions/runs/45928207397","at":"2026-11-27T02:43:04Z"}}
 }

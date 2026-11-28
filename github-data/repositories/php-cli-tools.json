@@ -8,5 +8,5 @@
 "milestone":null,
 "release":{"tag":"v0.13.3","url":"https://github.com/wp-cli/php-cli-tools/releases/tag/v0.13.3","published_at":"2026-11-26T17:37:04Z"},
 "unreleased":{"total":0,"human":0,"url":"https://github.com/wp-cli/php-cli-tools/compare/v0.13.3...main"},
-"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/php-cli-tools/actions/runs/45921961747","at":"2026-11-27T01:20:59Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/php-cli-tools/actions/runs/45928134908","at":"2026-11-27T02:27:48Z"}}
+"ci":{"testing":{"conclusion":"success","url":"https://github.com/wp-cli/php-cli-tools/actions/runs/46092525755","at":"2026-11-28T01:20:23Z"},"code_quality":{"conclusion":"success","url":"https://github.com/wp-cli/php-cli-tools/actions/runs/45928134908","at":"2026-11-27T02:27:48Z"}}
 }
